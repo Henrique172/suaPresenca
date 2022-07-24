@@ -33,7 +33,7 @@
     @if($search)
     <h2>Buscando por: <b>{{ $search }}</b></h2>
     @else 
-    <h2 style="color:rgb(8, 4, 115); font-family:Bradley Hand">SUA PRESENCA NEWS <hr> </h2>
+    <h2 style="color:rgb(8, 4, 115); font-family:Bradley Hand">SUA PRESENCA NEWssS <hr> </h2>
     {{-- <h2>AGENDA</h2> --}}
     {{-- <h2>Proximos Eventos</h2> --}}
     <p class="subtitle" style="font-size:25px">Os eventos da nossa igreja você encontra aqui</p>
