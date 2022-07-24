@@ -98,6 +98,7 @@ class MembrosController extends Controller
             dd($request->all()['nome']);
             dd($user->name = $request->all()['nome']);
 
+            
             }
 
         // $membro = new Membros;
