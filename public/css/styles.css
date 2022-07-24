@@ -1,0 +1,323 @@
+*{
+    font-family: 'roboto';
+}
+body{
+    min-width: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+ 
+}
+header{
+    /* background-color: #FFFFFF; */
+    border-bottom: 1px solid rgb(29, 26, 218);
+    background-color: #000;
+}
+.row {
+    margin: 0;
+}
+.container-fluid {
+    padding: 0;
+}
+.btn-primary {
+    background-color: #f2a340;
+    border: 2px solid #c28008;
+}
+.btn-primary:hover{
+    background-color: #c28008;
+    border-color: #c28008;
+}
+.msg{
+    background-color: #d4edda;
+    color:#155724;
+    border: 1px solid #c3e6cb;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding:10px;
+}
+
+/* navbar */
+
+#navbar img {
+    width: 20%;
+    /* height:40px; */
+}
+
+#navbar{
+    justify-content: space-between;
+    background-color: #000000;
+    padding: 5px 20px;
+}
+#navbar a {
+    font-size:14px;
+    color: #757575;
+    padding-right: 20px;
+}
+#navbar a:hover {
+     color: #f2a340;
+}
+
+#search-container{
+    /* background-color: rgb(3, 7, 56); */
+    /* background-image: url("../img/logo-preta.jpg"); */
+    background-size: cover;
+    background-position:center;
+    height:450px;
+    /* opacity: 0.99; */
+    /* padding:50px; */
+    text-align:center;
+}
+#search-container h1 {
+    color:#FFF;
+    margin-bottom: 30px;
+    font-weight: 900;
+    
+}
+#search-container form {
+
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* events-list */
+
+#events-container{
+    padding:50px;
+    text-align: center;
+}
+#events-container h2{
+    margin-bottom: 10px;
+}
+#events-container .subtitle{
+    color: #757575;
+    margin-bottom:30px;
+}
+
+
+/*Event create page */ 
+
+#event-create-container {
+
+    padding: 30px;
+}
+#event-create-container label {
+    font-weight: bold;
+}
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea{
+    font-size: 12px;
+}
+
+/* event show */
+
+#image-container,
+#info-container{
+    margin-top: 30px;
+}
+
+#image-container img{
+    border-radius: 10px;
+    width: 50%;
+}
+
+#info-container h1{
+    font-size:36px;
+    font-weight: 900;
+}
+#info-container p{
+    margin: 0;
+    font-size: 14px;
+    display:flex;
+}
+
+#info-container h3,
+#description-container h3{
+
+    font-size: 20px;
+    font-weight:bold; 
+}
+
+#info-container ion-icon{
+    font-size: 20px;
+    color: #f2a340;
+    margin-right: 5px;
+}
+
+
+#cards-container{
+    display: flex;
+}
+#info-container #event-submit{
+    margin:20px 0;
+}
+#items-list{
+    list-style: none;
+     padding-left: 0;  
+}
+#items-list li{
+    display: flex;
+}
+
+
+#events-container .card{
+
+        flex:1 1 24%;
+        max-width: 25%;
+        border-radius: 10px;
+        padding:0;
+        margin: .5px;
+}
+#events-container img{
+    max-height: 150px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#fotoAp img{
+    /* text-align: center; */
+    padding-left:20px;
+    width:50%;
+    /* height:50%; */
+    padding-bottom: 100px;
+}
+#descricaoQuemSomos{
+    width:70%;
+    margin: 0 auto; 
+    font-size: 20px;
+}
+#descricaoQuemSomos p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #c28008;
+}
+
+.card .card-date{
+    font-size: 12px;
+    color: #CCC;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.card .card-title{
+    color: #212121;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.card-participants{
+    font-size: 14px;
+    color: #757575;
+}
+
+
+/* footer  */
+
+footer{
+
+    text-align: center;
+    background-color: #000 ;
+    /* background-color: rgba(0, 0, 0, 0.333) ; */
+    color:rgb(255, 251, 251);
+    padding: 30px;
+    position:absolute important;
+    bottom: 0;
+    width:100%;
+}
+
+footer p{
+    margin-bottom: 0;
+}
+#enderecoMap{
+    padding:100px;
+}
+#contatos {
+    padding: 5px;
+}
+
+.dashboard-title-container {
+    margin-bottom:30px;
+    margin-top:30px;
+}
+.dashboard-events-container th{
+    
+    /* width:20%; */
+}
+.dashboard-events-container ion-icon{
+
+    margin-left: 20px;
+    /* font-size: 30px; */
+}
+#cards{
+    margin-left:30px;
+    margin-right:10px
+}
+.card{
+    padding:10px
+}
+ #tableMembro{
+     width:100%;
+     font-size: 14px;
+     /* margin-left: 10px; */
+}
+#dizimoOferta{
+
+    padding-top: 40px;
+    padding-bottom: 50px;
+    color:rgb(169, 166, 166);
+    font-size: 22px;
+    background-color: rgba(245, 239, 239, 0.466);
+}
+.containerDizimo h3{
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.containerDizimo hr { 
+    border: 2px solid black;
+}
+
+.containerDizimo h1 { 
+padding-top: 60px;
+padding-bottom: 50px;
+}
+
+#chavesPix{
+    background-color: #173e21a7;
+    padding-bottom: 80px;
+}
+.formDizimo h2{
+    font-size: 25px;
+    padding:30px;
+}   
+.formDizimo{
+
+    /* text */
+}
+.slide-content{
+
+    width:100%;
+    height:100%;
+}
+
+.slide-content img{
+    height:100%;
+    width:100%;
+}
+.slide-content img:hover{
+    opacity: 1.9; 
+}
+.radio{
+    background-color: #000;
+    height:10%;
+    text-align: center;
+    padding-top: 15px;
+}
+.radio audio{
+    height:300px
+}
+
+/* editacao de membro */
+
+.img-preview {
+    width: 100px;
+}
