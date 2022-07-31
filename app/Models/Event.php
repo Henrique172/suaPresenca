@@ -12,6 +12,8 @@ class Event extends Model
     protected $casts = [
         'items' => 'array'
     ];
+    protected $guarded = [];
+    // protected $fillable = ['nome'];
 
     protected $dates = ['date'];
 

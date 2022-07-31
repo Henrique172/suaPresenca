@@ -68,11 +68,50 @@ class EventController extends Controller
     }
 
     public function destroy($id){
+        // dd($id);
 
-        Event::findOrFail($id)->delete();
+        Event::find($id)->delete();
 
-        return redirect('/events')->with('msg', 'Evento Deletado com Sucesso!');
+        return redirect('/dashboardEventos')->with('msg', 'Evento Deletado com Sucesso!');
 
+    }
+
+    public function edit($id){
+        $event = Event::findOrFail($id);
+        // dd($membro);
+
+        return view ('events.edit', ['events' => $event]);
+    }
+
+    public function update(Request $request){
+
+        $find =  Event::findOrFail($request->id);
+        
+        $events = new Event;
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            
+            $requestImage = $request->foto;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now") . "." . $extension);
+            $requestImage->move(public_path('img/events'), $imageName);
+        }
+        
+        // DELETA FOTO ANTIGA PARA ADICIONAR A NOVA
+        // SE FOR ALTERADA DELETA A ANTIGA
+        if(isset($imageName)){
+            File::delete('img/events/'.$find->image);
+        }
+        // dd($request);
+        
+        // Event::findOrFail($request->id)->update($request->all());
+        // Event::findOrFail($request->id)->update(['image' => isset($imageName) ? $imageName: $find->image ]);
+        if(  Event::findOrFail($request->id)->update($request->all()) && Event::findOrFail($request->id)->update(['image' => isset($imageName) ? $imageName: $find->image ])){
+
+            return redirect('/dashboardEventos')->with('msg', 'Evento '.$find->title .' Editado !');
+        }
+        return redirect('/dashboardEventos')->with('msg', 'ERRO!');
+        
+        
     }
 
 }

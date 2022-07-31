@@ -20,6 +20,7 @@
                         <th scope="col">Titulo</th>
                         <th scope="col">Autor</th>
                         <th scope="col">Data Criaçao</th>
+                        <th scope="col">Acoes</th>
                 </thead>
                 <tbody>
                         @foreach ($events as $event)
@@ -40,6 +41,13 @@
                                         </button>
                                    </form> --}}
                                 </td>
+                                <td>
+                                        <a style="font-size:20px" href="/events/edit/{{ $event->id }}">
+                                        <ion-icon name="pencil" class="btn btn-primary"></ion-icon></a>
+
+                                        <a style="font-size:25px" href="/events/del/{{ $event->id }}">
+                                         <ion-icon name="trash-outline" class="btn btn-danger"></ion-icon></a>
+                        </td>
                         </tr>
                         
                         @endforeach
