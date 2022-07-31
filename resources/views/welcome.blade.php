@@ -31,7 +31,7 @@
 
 
     @if($search)
-    <h2>Buscando por: <b>{{ $search }}</b></h2>  
+    <h2>Buscando por: <b>{{ $search }}</b></h2>
     @else 
     <h2 style="color:rgb(8, 4, 115); font-family:Bradley Hand">SUA PRESENCA NEWS<hr> </h2>
     {{-- <h2>AGENDA</h2> --}}
