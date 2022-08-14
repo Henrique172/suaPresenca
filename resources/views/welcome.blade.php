@@ -15,7 +15,7 @@
 
       
       <div class="slide-content" >
-          <img class="mySlides" src="img/vetorLogoSuapresenca.png" style="width:100%; height:100%">
+          <img class="mySlides" src="img/vetorLogoSuaPresenca.png" style="width:100%; height:100%">
           {{-- <img class="mySlides" src="/img/logoVermelha.jpg" style="width:100%">
           <img class="mySlides" src="/img/logoBranca.jpg" style="width:100%"> --}}
         </div>
