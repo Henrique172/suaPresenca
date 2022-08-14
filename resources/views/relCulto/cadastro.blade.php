@@ -68,8 +68,8 @@
   //<![CDATA[
 $(window).on('load', function () {
     $('#preloader .inner').fadeOut();
-    $('#preloader').delay(350).fadeOut('slow'); 
-    $('body').delay(350).css({'overflow': 'visible'});
+    $('#preloader').delay(150).fadeOut('slow'); 
+    $('body').delay(150).css({'overflow': 'visible'});
 })
 //]]>
 
