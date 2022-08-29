@@ -66,11 +66,11 @@
 <script>
 
   //<![CDATA[
-$(window).on('load', function () {
-    $('#preloader .inner').fadeOut();
-    $('#preloader').delay(150).fadeOut('slow'); 
-    $('body').delay(150).css({'overflow': 'visible'});
-})
+// $(window).on('load', function () {
+//     $('#preloader .inner').fadeOut();
+//     $('#preloader').delay(150).fadeOut('slow'); 
+//     $('body').delay(150).css({'overflow': 'visible'});
+// })
 //]]>
 
 </script>
@@ -82,15 +82,15 @@ $(window).on('load', function () {
 
 
 
-  #preloader {
+  /* #preloader {
     position:fixed;
     top:0;
     left:0;
     right:0;
     bottom:0;
     background-color:#0a0127; /* cor do background que vai ocupar o body */
-    z-index:999; /* z-index para jogar para frente e sobrepor tudo */
-}
+    /* z-index:999; z-index para jogar para frente e sobrepor tudo */
+} */
 #preloader .inner {
     position: absolute;
     top: 50%; /* centralizar a parte interna do preload (onde fica a animação)*/
