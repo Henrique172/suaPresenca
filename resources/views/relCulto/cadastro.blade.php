@@ -21,7 +21,7 @@
     <div class="row">
       
       {{-- <div class="form-row"> --}}
-        <h2 class="text-center">IGREJA COMUNIDADE EVANGELICA SUA PRESENÇA</h2>
+        <h2 class="text-center">IGREJA COMUNIDADE SUA PRESENÇA</h2>
         <br />
         <br />
         <br />

@@ -41,7 +41,11 @@
   
     <tr style="text-decoration: {{ $ativo }}; color:{{ $color }}">
       <th scope="row">{{ $i ++ }}</th>
-      <td><abbr title="{{$inativo}}"><img src="img/membros/{{$membro->foto}}" alt="{{$membro->nome}}" width="50" style="border-radius: 50px; height:50px"></abbr></td>
+      <td>
+          <a href="img/membros/{{$membro->foto}}">
+          <img src="img/membros/{{$membro->foto}}" alt="{{$membro->nome}}" width="50" style="border-radius: 50px; height:50px">
+        </a>
+        </td>
       <td>{{$membro->nome}}</td>
       <td>{{$membro->endereco}}</td>
       <td>{{$membro->celular}}</td>
