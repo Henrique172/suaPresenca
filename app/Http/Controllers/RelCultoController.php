@@ -19,7 +19,6 @@ class RelCultoController extends Controller
 
         $model = new RelCulto;
 
-        // dd($request->visitantes + $request->qtds_membros);
 
         $model->pregador = $request->pregador;
         $model->endereco = $request->endereco;
@@ -31,6 +30,9 @@ class RelCultoController extends Controller
         
         if($model->save()){
             return redirect('/dashboard')->with('msg', 'Relatorio registrado');
+        }else{
+            return redirect('/dashboard')->with('msg', 'Erro ao adicionar Relatorio, Repita Operacao!');
+
         }
 
         // return view('/dashboard');
