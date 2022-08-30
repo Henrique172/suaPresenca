@@ -46,7 +46,7 @@
 
         <br />
         {{-- <input name="certificado" type="hidden" value="0"/> --}}
-        <input type="submit" class="btn btn-success" value="Criar evento">
+        <input type="submit" class="btn btn-success" value="Adicionar">
     </form>
 </div>
 @endsection
