@@ -16,14 +16,19 @@
 
                             
                              @foreach($find as $niver)
-                                {{-- {{ dd($niver->nome) }} --}}
+                                {{-- {{ dd($niver->foto) }} --}}
                             <ul>
-                                @php 
+                                <?php  
                                     $mesNiver = date('m', strtotime($niver->dataNascimento));
                                     if(date('m') == $mesNiver){
                                         $nome = $niver->nome;
                                         echo '<li> ';
-                                        echo  $nome.' -- '. date('d/m/Y', strtotime($niver->dataNascimento));
+                                            ?>
+                                        <img src="/img/membros/{{$niver->foto}}" width="40" style="border-radius: 50px">
+                                            @php
+
+                                        //    echo" <img src='img/membros/$niver->foto";
+                                        echo ' '.  $nome. ' -- '. date('d/m/Y', strtotime($niver->dataNascimento));
                                         echo '</li>';
                                     }
                                     @endphp 

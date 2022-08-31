@@ -95,8 +95,8 @@ class MembrosController extends Controller
         
         if($request->all()['acesso_privilegiado'] == 1){
             $user = new User;
-            dd($request->all()['nome']);
-            dd($user->name = $request->all()['nome']);
+            // dd($request->all()['nome']);
+            // dd($user->name = $request->all()['nome']);
             }
 
         // $membro = new Membros;
