@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use \App\models\RelCulto;
+use App\Models\RelCulto;
 use PDF;
 
 class RelCultoController extends Controller
@@ -18,7 +18,7 @@ class RelCultoController extends Controller
     public function add(request $request){
 
         $model = new RelCulto;
-        dd($request);die;
+        // dd($request);die;
 
 
         $model->pregador = $request->pregador;
