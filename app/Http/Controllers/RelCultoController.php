@@ -17,8 +17,8 @@ class RelCultoController extends Controller
 
     public function add(request $request){
 
-        dd($request);die;
         $model = new RelCulto;
+        dd($request);die;
 
 
         $model->pregador = $request->pregador;
