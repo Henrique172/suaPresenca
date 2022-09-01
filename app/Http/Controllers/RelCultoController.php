@@ -17,6 +17,7 @@ class RelCultoController extends Controller
 
     public function add(request $request){
 
+        dd($request);die;
         $model = new RelCulto;
 
 
@@ -28,7 +29,6 @@ class RelCultoController extends Controller
         $model->horario = $request->horario;
         $model->qtds_total = $request->visitantes + $request->qtds_membros;
         $model->data = date('Y-m-d');
-        dd($model);die;
         
         if($model->save()){
             return redirect('/dashboard')->with('msg', 'Relatorio registrado');
