@@ -22,11 +22,13 @@ class RelCultoController extends Controller
 
         $model->pregador = $request->pregador;
         $model->endereco = $request->endereco;
+
         $model->visitantes = $request->visitantes;
         $model->qtds_membros = $request->qtds_membros;
         $model->horario = $request->horario;
         $model->qtds_total = $request->visitantes + $request->qtds_membros;
         $model->data = date('Y-m-d');
+        dd($model);die;
         
         if($model->save()){
             return redirect('/dashboard')->with('msg', 'Relatorio registrado');
