@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\models\RelCulto;
+use \App\models\RelCulto;
 use PDF;
 
 class RelCultoController extends Controller
