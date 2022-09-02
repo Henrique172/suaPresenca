@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\RelCulto;
 use PDF;
+use DateTime;
+use DateTimeZone;
 
 class RelCultoController extends Controller
 {
@@ -18,7 +20,6 @@ class RelCultoController extends Controller
     public function add(request $request){
 
         $model = new RelCulto;
-        // dd($request);die;
 
 
         $model->pregador = $request->pregador;
@@ -29,12 +30,23 @@ class RelCultoController extends Controller
         $model->horario = $request->horario;
         $model->qtds_total = $request->visitantes + $request->qtds_membros;
         $model->data = date('Y-m-d');
-        
-        if($model->save()){
-            return redirect('/dashboard')->with('msg', 'Relatorio registrado');
-        }else{
-            return redirect('/dashboard')->with('msg', 'Erro ao adicionar Relatorio, Repita Operacao!');
 
+        $verifica = RelCulto::where([['data', date('Y-m-d')]])->get();
+
+            // dd($verifica);die;
+            ##verifica se ja tem relatorio de culto naquela data
+        if($verifica){
+            return redirect('/dashboard')->with('msgErro', 'Ja exite Relatorio registrado nessa data');
+
+        }else{
+
+            
+            if($model->save()){
+                return redirect('/dashboard')->with('msg', 'Relatorio registrado');
+            }else{
+                return redirect('/dashboard')->with('msg', 'Erro ao adicionar Relatorio, Repita Operacao!');
+                
+            }
         }
 
         // return view('/dashboard');

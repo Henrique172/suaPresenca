@@ -36,11 +36,11 @@
       {{-- </div> --}}
       <div class="form-group col-sm-3">
         <label>Visitantes</label>
-        <input type="text" name="visitantes" class="form-control" placeholder="Qtds de Visitantes">
+        <input type="number" name="visitantes" class="form-control" placeholder="Qtds de Visitantes">
       </div>
       <div class="form-group col-sm-3">
         <label>Qntd Membros</label>
-        <input type="text" name="qtds_membros" class="form-control" placeholder="Qtd Pessoas">
+        <input type="number" name="qtds_membros" class="form-control" placeholder="Qtd Pessoas">
       </div>
         <div class="form-group col-md-3">
           <label >Horario</label>

@@ -115,6 +115,10 @@ function myFunction() {
                         <p class="msg">{{session('msg')}}</p>
                         @endif
                         
+                        @if(@session('msgErro'))
+                        <p class="msgErro">{{session('msgErro')}}</p>
+                        @endif
+                        
                         @yield('content')
                     </div>
                 </div>

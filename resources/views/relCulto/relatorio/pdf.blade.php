@@ -35,10 +35,12 @@
                                 $totalTotal = 0; 
                                 $totalArrecadado = 0; 
                            @endphp
-                     @foreach($consulta as $find)
-                     {{-- @php dd($find)@endphp --}}
-                         {{-- <p>{{$find->nome}}</p> --}}
 
+
+
+
+                     @foreach($consulta as $find)
+                     {{-- @php if($find->valor <> ''):@endphp --}}
                             <tr>
                                 <td scope="row">{{$i ++ }}</td>
                                 <td>{{$find->nome}}</td>
@@ -49,6 +51,7 @@
                                 $find->tipo == 1 ? $totalDizimo += $find->valor :  $totalTotal += $find->valor ;                          
                                 $totalArrecadado = $totalArrecadado += $find->valor;
                             @endphp
+                            {{-- @php endif; @endphp --}}
                             @endforeach
                             <br />
                         </table>
