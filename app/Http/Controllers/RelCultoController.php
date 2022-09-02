@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Models\RelCulto;
 use PDF;
-use DateTime;
-use DateTimeZone;
 
 class RelCultoController extends Controller
 {
@@ -33,10 +31,10 @@ class RelCultoController extends Controller
 
         $verifica = RelCulto::where([['data', date('Y-m-d')]])->get();
 
-            // dd($verifica);die;
+            // dd(isset($verifica));die;
             ##verifica se ja tem relatorio de culto naquela data
-        if($verifica){
-            return redirect('/dashboard')->with('msgErro', 'Ja exite Relatorio registrado nessa data');
+        if(isset($verifica)){
+            return redirect('/dashboard')->with('msgErro', 'Ja exite Relatório registrado nessa data');
 
         }else{
 
