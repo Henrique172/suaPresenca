@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\RelCulto;
 use PDF;
+use Illuminate\Support\Facades\Hash;
 
 class RelCultoController extends Controller
 {
@@ -29,7 +30,11 @@ class RelCultoController extends Controller
         $model->qtds_total = $request->visitantes + $request->qtds_membros;
         $model->data = date('Y-m-d');
 
+      
 
+        // $senha = Hash::make('aline123'); 
+
+        dd($senha);die;
             #verifica se ja tem relatorio de culto naquela data
         if(RelCulto::where('data', date('Y-m-d'))->count() <> 0 ){
             return redirect('/dashboard')->with('msgErro', 'Ja exite Relatório registrado nessa data');

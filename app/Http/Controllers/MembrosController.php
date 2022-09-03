@@ -14,7 +14,7 @@ class MembrosController extends Controller
 
     public function index(){
 
-        $find = Membros::all();
+        $find = Membros::all()->sortBy("nome");
 
 
         return view('membros.index', ['find' => $find]);
