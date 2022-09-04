@@ -28,13 +28,11 @@ class RelCultoController extends Controller
         $model->horario = $request->horario;
         $model->qtds_total = $request->visitantes + $request->qtds_membros;
         $model->data = date('Y-m-d');
-        die('chegou');
 
       
 
         // $senha = Hash::make('aline123'); 
 
-        dd($senha);die;
             #verifica se ja tem relatorio de culto naquela data
         if(RelCulto::where('data', date('Y-m-d'))->count() <> 0 ){
             return redirect('/dashboard')->with('msgErro', 'Ja exite Relatório registrado nessa data');
