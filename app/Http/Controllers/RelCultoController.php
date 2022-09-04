@@ -17,18 +17,18 @@ class RelCultoController extends Controller
     }
 
     public function add(request $request){
-        die('chegou');
         $model = new RelCulto;
-
-
+        
+        
         $model->pregador = $request->pregador;
         $model->endereco = $request->endereco;
-
+        
         $model->visitantes = $request->visitantes;
         $model->qtds_membros = $request->qtds_membros;
         $model->horario = $request->horario;
         $model->qtds_total = $request->visitantes + $request->qtds_membros;
         $model->data = date('Y-m-d');
+        die('chegou');
 
       
 
