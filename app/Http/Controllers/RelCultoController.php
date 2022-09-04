@@ -17,7 +17,7 @@ class RelCultoController extends Controller
     }
 
     public function add(request $request){
-
+        die('chegou');
         $model = new RelCulto;
 
 
