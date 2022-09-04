@@ -6,7 +6,7 @@
     @php
     // dd($consulta['consultaDizimos']);
         // $consulta = $consulta['consultaDizimos'];
-            $image = '/img/papelTimbrado.png';
+            $image = '/img/papelTimbrado.jpg';
             $data = new dateTime($consulta ? $consulta[0]->data :'');
             // dd($data);
             @endphp
