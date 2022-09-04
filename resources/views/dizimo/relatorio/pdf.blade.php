@@ -5,7 +5,7 @@
     
     @php
 
-            $image = '/img/papelTimbrado.jpg';
+            $image = '/img/papelTimbrado.png';
             $data = new dateTime(!$consulta ? $consulta[0]->data :'');
 
     @endphp
