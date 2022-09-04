@@ -24,7 +24,7 @@
             @php
            
              $find->valor ++;
-              dd('dddd');
+            //   dd('dddd');
                 $total = $valor += $find->valor;
             @endphp
             @endforeach
