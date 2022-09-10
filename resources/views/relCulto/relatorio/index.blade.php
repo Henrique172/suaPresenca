@@ -81,9 +81,9 @@
         padd
     } */
     
-    .active, .accordion:hover {
+    /* .active, .accordion:hover {
       background-color: #ccc; 
-    }
+    } */
     
     .panel {
       padding:  30px;

@@ -7,11 +7,12 @@
 
             <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
             <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
-        
-         {{-- Font google  --}}
-        <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
-
-        {{-- bootstrap --}}
+            
+            {{-- Font google  --}}
+            <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+            
+            {{-- bootstrap --}}
+            {{-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         {{-- Styles public --}}
@@ -40,7 +41,10 @@
 
 </head>
 <body>
+<div class="row">
+  <div class="col-sm-12">
 
+ 
 <div class="topnav" id="myTopnav">
   <a href="/" class="active">Inicio</a>
   <a href="/galeria">Galeria</a> 
@@ -87,7 +91,8 @@
   </a>
 </div>
 
-
+</div>
+</div>
 <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
@@ -151,7 +156,7 @@ function myFunction() {
     .topnav a {
       float: left;
       display: block;
-      color: rgb(81, 81, 81);
+      color: rgb(255, 255, 255);
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
@@ -160,9 +165,9 @@ function myFunction() {
     }
     
     .topnav a:hover {
-      background-color: rgb(142, 142, 142);
-      color: black;
-      font-size: 16px;
+      background-color: rgb(196, 27, 27);
+      color: rgb(156, 156, 156);
+      font-size: 15px;
     }
     
     .topnav a.active {

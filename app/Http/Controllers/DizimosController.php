@@ -31,7 +31,6 @@ class DizimosController extends Controller
     public function add(request $request){ 
 
         $dizimos = new Dizimos;
-        // dd($request->data);
         // dd(date_create_from_format("d/m/Y", $request->data));
         $dizimos->membro_id = $request->membro_id;
         $dizimos->valor = $request->valor;

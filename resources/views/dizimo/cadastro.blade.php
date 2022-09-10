@@ -27,7 +27,10 @@
 
         <div class="form-group col-sm-2" style=" margin: 0 auto">
           <label for="title">Valor do Dizimo</label>
-          <input type="text" class="form-control" id="valor" name="valor" placeholder="EX:. 124.65">
+          <label for="dinheiro">R$</label>
+          <input type="Text" class="form-control" id="valor" name="valor" size="12"placeholder="Digite o Valor"onKeyUp="mascaraMoeda(this, event)"  value="">
+
+          {{-- <input type="text" class="form-control" id="valor" name="valor" placeholder="EX:. 124.65"> --}}
         </div>
         <br />
         <div class="form-group col-sm-2" style=" margin: 0 auto">
@@ -49,3 +52,27 @@
 </div>
     
     @endsection
+
+    <script>
+      String.prototype.reverse = function(){
+  return this.split('').reverse().join(''); 
+};
+
+function mascaraMoeda(campo,evento){
+  var tecla = (!evento) ? window.event.keyCode : evento.which;
+  var valor  =  campo.value.replace(/[^\d]+/gi,'').reverse();
+  var resultado  = "";
+  var mascara = "##.###.###,##".reverse();
+  for (var x=0, y=0; x<mascara.length && y<valor.length;) {
+    if (mascara.charAt(x) != '#') {
+      resultado += mascara.charAt(x);
+      x++;
+    } else {
+      resultado += valor.charAt(y);
+      y++;
+      x++;
+    }
+  }
+  campo.value = resultado.reverse();
+}
+    </script>

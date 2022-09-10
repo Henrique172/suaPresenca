@@ -20,6 +20,10 @@ use App\Http\Controllers\MembrosController;
 use App\Http\Controllers\DizimosController;
 use App\Http\Controllers\BatismosController;
 use App\Http\Controllers\RelCultoController;
+use App\Http\Controllers\ListaPresencaController;
+
+Route::get('/listaPresenca', [ListaPresencaController::class, 'index']); 
+Route::get('/gerarLista', [ListaPresencaController::class, 'gerarLista']); 
 
 Route::get('/', [SiteController::class, 'index']); 
 // Route::get('/index', [SiteController::class, 'index']); 
