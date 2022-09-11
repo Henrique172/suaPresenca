@@ -19,7 +19,7 @@
             @php 
             $date = new dateTime($find->data)  @endphp
             <ul>
-                <li><b>{{ $find->nome }}</b> Valor de <b>R$ {{$find->valor}}</b>  no dia  {{ $date->format('d/m/Y') }}</li>
+                <li><b>{{ $find->nome }}</b> Valor de <b>R$ {{number_format($find->valor ,2,",",".")}}</b>  no dia  {{ $date->format('d/m/Y') }}</li>
             </ul>
             @php
            
@@ -28,7 +28,7 @@
                 $total = $valor += $find->valor;
             @endphp
             @endforeach
-            <h2>Total: R$ {{ $total }}</h2>
+            <h2>Total: R$ {{ number_format($total ,2,",",".") }}</h2>
         </div>
     </div>
 <style>

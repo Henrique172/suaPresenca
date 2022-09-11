@@ -8,6 +8,7 @@ use DateTime;
 use App\Models\Membros;
 use App\Models\Dizimos;
 use PDF;
+use Decimal\Decimal;
 
 class DizimosController extends Controller
 {
@@ -29,11 +30,13 @@ class DizimosController extends Controller
     }
 
     public function add(request $request){ 
+        $preco_corrigido = str_replace(".","",$request->valor );
+        $precoSemVirgula = str_replace(",",".", $preco_corrigido );
+        // dd(number_format($precoSemVirgula ,2,",",".") );
 
         $dizimos = new Dizimos;
-        // dd(date_create_from_format("d/m/Y", $request->data));
         $dizimos->membro_id = $request->membro_id;
-        $dizimos->valor = $request->valor;
+        $dizimos->valor = $precoSemVirgula;
         $dizimos->tipo = $request->tipo;
         $dizimos->data =  date_create_from_format("d/m/Y", $request->data);
 

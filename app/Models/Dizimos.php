@@ -62,5 +62,9 @@ class Dizimos extends Model
         return($consulta);
     }
 
+    public function dataPorExtenso(){
+        
+    }
+ 
      
 }

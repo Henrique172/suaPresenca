@@ -8,11 +8,17 @@
         // $consulta = $consulta['consultaDizimos'];
             $image = '/img/papelTimbrado.jpg';
             $data = new dateTime($consulta ? $consulta[0]->data :'');
+            dd($dataa);
+
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+           
+
             // dd($data);
             @endphp
             <img src="{{ public_path(). $image }}" alt="" width="100%">
             <div class="fundo">
-                <h1 style="text-align:center; font-size:17px">  RELATORIO DE CULTO + DIZIMOS <br />{{$data->format('d/m/Y')}}</h1>
+                <h1 style="text-align:center; font-size:17px">  RELATORIO DE CULTO + DIZIMOS <br />{{  strftime('%A %d de %B de %Y', strtotime($data->format('m/d/Y'))); }}</h1>
             <hr/>
                 <div class="relatorioCulto">
                         <b>Pregador:</b> {{ $consulta[0]->pregador }}      
@@ -26,7 +32,7 @@
                            <tr>
                              <th scope="col"style="width:30px">#</th>
                              <th scope="col" style="width:300px">Nome</th>
-                             <th scope="col" style="width:80px">Valor</th>
+                             <th scope="col" style="width:90px">Valor</th>
                              <th scope="col">Dizimo / Oferta ?</th>
                            </tr>
                            @php 
@@ -44,7 +50,7 @@
                             <tr>
                                 <td scope="row">{{$i ++ }}</td>
                                 <td>{{$find->nome}}</td>
-                                <td>R$ {{$find->valor}}</td>
+                                <td>R$ {{number_format($find->valor ,2,",",".")}}</td>
                                 <td>{{$find->tipo == 0 ? 'Oferta': 'Dizimo'}}</td>
                             </tr>
                             @php 
@@ -56,9 +62,9 @@
                             <br />
                         </table>
                         <div class="total">
-                            <b>Total Dizimo: </b>R$ {{$totalDizimo}}
-                            <b>Total Oferta: </b>R$ {{$totalTotal}}
-                            <b>Total Arrecadado: </b>R$ {{$totalArrecadado}}
+                            <b>Total Dizimo: </b>R$ {{number_format($totalDizimo, 2,",",".")}}
+                            <b>Total Oferta: </b>R$ {{number_format($totalTotal, 2,",",".")}}
+                            <b>Total Arrecadado: </b>R$ {{number_format($totalArrecadado, 2,",",".")}}
                         </div>
                         <br />
                         <br />

@@ -18,14 +18,15 @@
             @foreach($consulta as $find)
             @php $date = new dateTime($find->data)  @endphp
             <ul>
-                <li><b>{{ $find->nome }}</b>{{ $find->tipo == 0?' Oferta':' Dizimo' }} no Valor de <b>R$ {{$find->valor}}</b>  no dia  {{ $date->format('d/m/Y') }}</li>
+                <li><b>{{ $find->nome }}</b>{{ $find->tipo == 0?' Oferta':' Dizimo' }} no Valor de <b>R$ {{number_format($find->valor ,2,",",".")}}</b>  no dia  {{ $date->format('d/m/Y') }}</li>
             </ul>
             @php
             // $find->valor ++;
+                //   dd($find->valor); 
                 $total = $valor += $find->valor;
-            @endphp
+                @endphp
             @endforeach
-            <h2>Total: R$ {{ $total }},00</h2>
+            <h2>Total: R$ {{ number_format($total ,2,",",".") }}</h2>
         </div>
     </div>
 <style>
