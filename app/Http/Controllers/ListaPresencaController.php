@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Membros;
+use PDF;
+use DateTime;
 
 class ListaPresencaController extends Controller
 {
@@ -16,7 +18,15 @@ class ListaPresencaController extends Controller
     public function gerarLista(){ 
         $find = Membros::all()->sortBy("nome");
 
+        $pdf = PDF::loadView('listaPresenca.listaPdf', compact('find'))->setOptions(['defaultFont' => 'sans-serif']);
+        
+        $data =  new dateTime(date('d/m/Y'));
+        
+        $nomeRelatorio = 'Lista_de_Presenca_'.$data->format('m').'_'. $data->format('Y');
+        // dd($nomeRelatorio);
+        
+        return $pdf->setPaper('a4', 'landscape')->stream($nomeRelatorio);
 
-        return view('listaPresenca.lista', ['find' => $find]);
+
         }
     }
