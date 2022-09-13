@@ -1,29 +1,48 @@
 
-@extends('layouts.main')
 
 @section('title', 'Lista de Chamada')
 
-@section('content')
-<h1 class="text-center">Lista de Presenca</h1>
+<?php
 
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
+$data = new dateTime(); 
+
+?>
+
+	<h2>LISTA DE PRESENCA TODAS AS {{ strtoupper( strftime('%A', strtotime($data->format('m/d/Y')))); }}</h2>
 @php 
+
 $timestamp = strtotime("+7 days");
-// dd(date('d/m/Y', $timestamp));
+$data    = date("Y/m/d");
+$dataSemana = date("d-m-Y", strtotime($data) + (7 * 24 * 60 * 60));
+$dataDuasSemana = date("d-m-Y", strtotime($dataSemana) + (7 * 24 * 60 * 60));
+$dataTresSemana = date("d-m-Y", strtotime($dataDuasSemana) + (7 * 24 * 60 * 60));
+$dataQuatroSemana = date("d-m-Y", strtotime($dataTresSemana) + (7 * 24 * 60 * 60));
+
+// dd($danta);
 $repeticao = 1;
 @endphp
 <div class="row">
 	<div class='col-sm-8 col-md-8'>
-		
+		<br />
+		<br />
+		<br />
 		<table class='table' >
 			<tr >
 				<th>NOME</th>
-				<th>{{date('d/m/Y', $timestamp)}}</th>
+				<th style="transform: rotate(90deg)">{{$dataSemana}}</th>
+				<th style="transform: rotate(90deg)">{{$dataDuasSemana}}</th>
+				<th style="transform: rotate(90deg)">{{$dataTresSemana}}</th>
+				<th style="transform: rotate(90deg)">{{$dataQuatroSemana}}</th>
 					{{-- <th>NAO</th> --}}
 				</tr>
 				@foreach ($find as  $value):
 				
 			   <tr >
-				   <td style='width:620px'>{{$value->nome}}</td> </td>
+				   <td style='width:620px; font-size:12px'>{{$value->nome}}</td> </td>
+				   <td ></td>
+				   <td></td>
 				   <td></td>
 				   {{-- <td>eduluz197...</td> --}}
 				   <td>
@@ -48,4 +67,3 @@ $repeticao = 1;
 	}
 
 </style>
-@endsection

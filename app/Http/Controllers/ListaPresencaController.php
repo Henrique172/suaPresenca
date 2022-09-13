@@ -20,7 +20,7 @@ class ListaPresencaController extends Controller
 
         $pdf = PDF::loadView('listaPresenca.listaPdf', compact('find'))->setOptions(['defaultFont' => 'sans-serif']);
         
-        $data =  new dateTime(date('d/m/Y'));
+        $data =  new dateTime();
         
         $nomeRelatorio = 'Lista_de_Presenca_'.$data->format('m').'_'. $data->format('Y');
         // dd($nomeRelatorio);
