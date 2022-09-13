@@ -31,16 +31,16 @@ $repeticao = 1;
 		<table class='table' >
 			<tr >
 				<th>NOME</th>
-				<th style="transform: rotate(90deg)">{{$dataSemana}}</th>
-				<th style="transform: rotate(90deg)">{{$dataDuasSemana}}</th>
-				<th style="transform: rotate(90deg)">{{$dataTresSemana}}</th>
-				<th style="transform: rotate(90deg)">{{$dataQuatroSemana}}</th>
+				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataSemana}}</th>
+				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataDuasSemana}}</th>
+				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataTresSemana}}</th>
+				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataQuatroSemana}}</th>
 					{{-- <th>NAO</th> --}}
 				</tr>
 				@foreach ($find as  $value):
 				
 			   <tr >
-				   <td style='width:620px; font-size:12px'>{{$value->nome}}</td> </td>
+				   <td style='width:460px; font-size:11px'>{{$value->nome}}</td> </td>
 				   <td ></td>
 				   <td></td>
 				   <td></td>
@@ -64,6 +64,9 @@ $repeticao = 1;
 	}
 	h1{ 
 		text-align: center;
+	}
+	table{ 
+		/* padding-right:60px */
 	}
 
 </style>

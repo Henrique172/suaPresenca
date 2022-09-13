@@ -25,7 +25,7 @@ class ListaPresencaController extends Controller
         $nomeRelatorio = 'Lista_de_Presenca_'.$data->format('m').'_'. $data->format('Y');
         // dd($nomeRelatorio);
         
-        return $pdf->setPaper('a4', 'landscape')->stream($nomeRelatorio);
+        return $pdf->setPaper('a4', )->stream($nomeRelatorio);
 
 
         }
