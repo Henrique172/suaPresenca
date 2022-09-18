@@ -42,7 +42,7 @@ $repeticao = 1;
 				@foreach ($find as  $value):
 				
 			   <tr >
-				   <td style='width:460px; font-size:11px'>{{strtoupper($value->nome)}}</td> </td>
+				   <td style='width:460px; font-size:11px'>{{mb_strtoupper($value->nome)}}</td> </td>
 				   <td ></td>
 				   <td></td>
 				   <td></td>
