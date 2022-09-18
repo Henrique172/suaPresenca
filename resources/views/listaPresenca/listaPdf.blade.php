@@ -1,18 +1,19 @@
 
-
-@section('title', 'Lista de Chamada')
+<div id="pdf"  style="margin: 0 auto">
+{{-- @section('title', 'Lista de Chamada') --}}
 
 <?php
-use DateTime;
-setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-date_default_timezone_set('America/Sao_Paulo');
-$data = new DateTime(); 
-
+	$image = '/img/papelTimbrado.jpg';
+	setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+	date_default_timezone_set('America/Sao_Paulo');
+	$data = new DateTime(); 
+	// dd(public_path($image));
 ?>
+<img src="{{ public_path($image) }}"  width="100%" />
 
+<div class="fundo">
 	<h2>LISTA DE PRESENCA TODAS AS {{ strtoupper( strftime('%A', strtotime($data->format('m/d/Y')))); }}</h2>
-@php 
-
+	@php 
 $timestamp = strtotime("+7 days");
 $data    = date("Y/m/d");
 $dataSemana = date("d-m-Y", strtotime($data) + (7 * 24 * 60 * 60));
@@ -31,16 +32,17 @@ $repeticao = 1;
 		<table class='table' >
 			<tr >
 				<th>NOME</th>
+				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$data}}</th>
 				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataSemana}}</th>
 				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataDuasSemana}}</th>
 				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataTresSemana}}</th>
-				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataQuatroSemana}}</th>
+				{{-- <th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataQuatroSemana}}</th> --}}
 					{{-- <th>NAO</th> --}}
 				</tr>
 				@foreach ($find as  $value):
 				
 			   <tr >
-				   <td style='width:460px; font-size:11px'>{{$value->nome}}</td> </td>
+				   <td style='width:460px; font-size:11px'>{{strtoupper($value->nome)}}</td> </td>
 				   <td ></td>
 				   <td></td>
 				   <td></td>
@@ -56,11 +58,12 @@ $repeticao = 1;
 	
 	
 </div>
+</div>
 <style>
 
 	td{
 		border: 1px solid black;
-		padding:10px
+		padding:10px;
 	}
 	h1{ 
 		text-align: center;
@@ -68,5 +71,16 @@ $repeticao = 1;
 	table{ 
 		/* padding-right:60px */
 	}
+	
+	.pdf img{
+		width: 80%;    
+		height: 20%;
+		
+	}
+	
+	.fundo{
+		margin-top: -750px;
+		/* background-image: "/img/papelTimbrado.jpg"; */
+} 
 
 </style>
