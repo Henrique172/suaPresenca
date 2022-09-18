@@ -7,12 +7,12 @@
 	setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 	date_default_timezone_set('America/Sao_Paulo');
 	$data = new DateTime(); 
-	// dd(public_path($image));
+	// dd(strftime('%A', strtotime($data->format('m/d/Y'))));
 ?>
 <img src="{{ public_path($image) }}"  width="100%" />
 
 <div class="fundo">
-	<h2>LISTA DE PRESENCA TODAS AS {{ strtoupper( strftime('%A', strtotime($data->format('m/d/Y')))); }}</h2>
+	<h2>LISTA DE PRESENCA DE <?= strftime('%A', strtotime($data->format('m/d/Y'))) == 'Domingo'? 'TODOS OS': 'TODAS AS' ?>  {{ strtoupper( strftime('%A', strtotime($data->format('m/d/Y')))); }} DO MES</h2>
 	@php 
 $timestamp = strtotime("+7 days");
 $data    = date("Y/m/d");
@@ -79,7 +79,7 @@ $repeticao = 1;
 	}
 	
 	.fundo{
-		margin-top: -750px;
+		margin-top: -980px;
 		/* background-image: "/img/papelTimbrado.jpg"; */
 } 
 
