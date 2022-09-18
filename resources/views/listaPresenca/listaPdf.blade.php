@@ -32,7 +32,7 @@ $repeticao = 1;
 		<table class='table' >
 			<tr >
 				<th>NOME</th>
-				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$data}}</th>
+				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{date("d/m/Y")}}</th>
 				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataSemana}}</th>
 				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataDuasSemana}}</th>
 				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{$dataTresSemana}}</th>
