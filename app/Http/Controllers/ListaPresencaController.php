@@ -16,7 +16,8 @@ class ListaPresencaController extends Controller
 
     public function gerarLista(){ 
         $data =  new dateTime();
-        $find = Membros::all()->sortBy("nome");
+        // $find = Membros::all()->sortBy("nome");
+        $find = Membros::where([['status', '0' ]])->get();
         
         $pdf = PDF::loadView('listaPresenca.listaPdf', compact('find'));
         $nomeRelatorio = 'Lista_de_Presenca_'.$data->format('m').'_'. $data->format('Y');
