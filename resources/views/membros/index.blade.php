@@ -46,7 +46,7 @@
           <img src="img/membros/{{$membro->foto}}" alt="{{$membro->nome}}" width="50" style="border-radius: 50px; height:50px">
         </a>
         </td>
-      <td>{{$membro->nome}}</td>
+      <td>{{mb_strtoupper($membro->nome)}}</td>
       <td>{{$membro->endereco}}</td>
       <td>{{$membro->celular}}</td>
       {{-- {{ dd( date('d/m/Y', strtotime($membro->dataNascimento))) }} --}}
