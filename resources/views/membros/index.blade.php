@@ -29,6 +29,7 @@
   </thead>
   <tbody>
     @php 
+      // $pintaCrianca = $qntdCrianca <> ''? 'blue':'';
       $i = 1;
       
       @endphp
@@ -37,10 +38,11 @@
       $ativo = $membro->status == 1? 'line-through': '';
       $color = $membro->status == 1? 'red':'';
       $inativo = $membro->status == 1? 'Inativo':'Ativo';
+      // dd($pintaCrianca);
     @endphp
   
-    <tr style="text-decoration: {{ $ativo }}; color:{{ $color }}">
-      <th scope="row">{{ $i ++ }}</th>
+    <tr style="text-decoration: {{ $ativo }}; color:{{ $color }}; background-color:{{}} ">
+      <th scope="row" >{{ $i ++ }}</th>
       <td>
           <a href="img/membros/{{$membro->foto}}">
           <img src="img/membros/{{$membro->foto}}" alt="{{$membro->nome}}" width="50" style="border-radius: 50px; height:50px">
