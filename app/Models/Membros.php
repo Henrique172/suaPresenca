@@ -46,6 +46,25 @@ class Membros extends Model
         $membro->save();
     }
 
+    public function calcularIdade($find){
+
+        $count = 0;
+        foreach ($find as $dados){
+
+            $data = new DateTime($dados->dataNascimento);
+            $resultado = $data->diff( new DateTime( date('Y-m-d') ) );
+            if($resultado->format( '%Y' ) <  8){
+                    $count ++;
+            }
+
+            return $count;
+            // dd($count);
+        }
+
+       
+        // dd($find[0]->dataNascimento);
+    }
+
 }
 
 

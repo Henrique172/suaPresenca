@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Membros;
 use App\Models\User;
 use File;
+use DateTime;
 
 class MembrosController extends Controller
 {
@@ -14,10 +15,16 @@ class MembrosController extends Controller
 
     public function index(){
 
+        $models = new Membros;
+        
         $find = Membros::all()->sortBy("nome");
 
+       $qntdCrianca = $models->calcularIdade($find);
 
-        return view('membros.index', ['find' => $find]);
+    //    dd($idade);
+
+
+        return view('membros.index', ['find' => $find, 'qntdCrianca'=> $qntdCrianca]);
     }
 
     public function add (Request $request){
