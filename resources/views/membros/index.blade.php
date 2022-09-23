@@ -41,7 +41,7 @@
       // dd($pintaCrianca);
     @endphp
   
-    <tr style="text-decoration: {{ $ativo }}; color:{{ $color }}; background-color:{{}} ">
+    <tr style="text-decoration: {{ $ativo }}; color:{{ $color }}; ">
       <th scope="row" >{{ $i ++ }}</th>
       <td>
           <a href="img/membros/{{$membro->foto}}">
