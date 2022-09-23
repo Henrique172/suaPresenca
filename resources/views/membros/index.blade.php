@@ -11,7 +11,7 @@
   </div>
   @endauth
 <div class="col-md-12">
- <b> Total de Membros:</b> {{ count($find) - $qntdCrianca }}  <b style="padding-left: 80px;"> Qnts de Crianças:</b> {{ $qntdCrianca }}
+ <b style="padding-left: 20px;"> Qntds Membros:</b> {{ count($find) - $qntdCrianca }}  <b style="padding-left: 80px;"> Qntds de Crianças:</b> {{ $qntdCrianca }}
 </div>
 
 <table class="table col-md-12" id="tableMembro">
