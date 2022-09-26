@@ -29,7 +29,8 @@
                     <th scope="col">#</th>
                     <th scope="col" style="width:250px">Pregador</th>
                     <th scope="col">Visitantes</th>
-                    <th scope="col">Membros Presentes</th>
+                    <th scope="col">Membros</th>
+                    <th scope="col">Total Presentes</th>
                     <th scope="col">Horario</th>
                     <th scope="col">Data</th>
                     <th scope="col">-</th>
@@ -44,6 +45,7 @@
                     <td>{{ $dados->pregador }}</td>
                     <td style="text-align: center">{{ $dados->visitantes }}</td>
                     <td style="text-align: center">{{ $dados->qtds_membros }}</td>
+                    <td style="text-align: center">{{ $dados->qtds_membros + $dados->visitantes }}</td>
                     <td>{{ $dados->horario }}</td>
                     <td>{{ $data->format('d/m/Y') }}</td>
                     <td>
