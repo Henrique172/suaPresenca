@@ -2,8 +2,6 @@
 @section('title', 'Dashboard Sua Presença')
 
 @section('contentDashboard')
-
-<div class="container_relatorio">
     <div class="row">
         <div class="col-sm-12" style="margin-top:15px">
              <div class="col-sm-6 " style="margin:0 auto; ">
@@ -16,34 +14,47 @@
                 <br/>
                 
             </div>
-            <div class="col-sm-8" id="menuRelatorio">
+            <div class="col-sm-10" id="menuRelatorio">
 
 
 
-            <table class="table">
+
+                
+
+
+
+            <table class="table" >
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Pregador</th>
+                    <th scope="col" style="width:250px">Pregador</th>
                     <th scope="col">Visitantes</th>
-                    <th scope="col">Pessoas Presentes</th>
+                    <th scope="col">Membros Presentes</th>
                     <th scope="col">Horario</th>
+                    <th scope="col">Data</th>
                     <th scope="col">-</th>
                   </tr>
                 </thead>
                 <tbody>
+                    @php $i = 1; @endphp
+                    @foreach($find as $dados)
+                    @php $data = new DateTime($dados->data) @endphp
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>19:30</td>
+                    <th scope="row">{{ $i ++}}</th>
+                    <td>{{ $dados->pregador }}</td>
+                    <td style="text-align: center">{{ $dados->visitantes }}</td>
+                    <td style="text-align: center">{{ $dados->qtds_membros }}</td>
+                    <td>{{ $dados->horario }}</td>
+                    <td>{{ $data->format('d/m/Y') }}</td>
                     <td>
-                        <button>
-                            <i icon="pencil"></i>
-                        </button>
+                        <button type="button" class="btn btn-success">
+                            <i class="bi bi-chat-right-text"></i>
+                          </button>
+                        <button type="button" class="btn btn-warning">
+                          </button>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
               
