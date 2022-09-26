@@ -16,38 +16,23 @@
                 <br/>
                 
             </div>
-            <div class="col-sm-8" id="menuRelatorio">
+            <div class="col-sm-6" id="menuRelatorio">
 
 
+            <button class="accordion">Relatorio de Culto</button>
+                <div class="panel">
 
-            <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Pregador</th>
-                    <th scope="col">Visitantes</th>
-                    <th scope="col">Pessoas Presentes</th>
-                    <th scope="col">Horario</th>
-                    <th scope="col">-</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>19:30</td>
-                    <td>
-                        <button>
-                            <i icon="pencil"></i>
-                        </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-
+                    <form action="/relCultoDizimo" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="title">Digite a Data</label>
+                            <input type="date" class="form-control"  name="data">
+                        </div>
+                        <br />
+                         <input type="submit" class="btn btn-success" value="Buscar">
+                    </form>
+                </div>
+                    <br />
 
             </div>
         </div>

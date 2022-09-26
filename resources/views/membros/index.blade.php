@@ -40,7 +40,8 @@
       $inativo = $membro->status == 1? 'Inativo':'Ativo';
       // dd($pintaCrianca);
     @endphp
-  
+    {{-- ##TIRANDO O OFERTANTE DA LISTA DE MEMBROS( SO SERVE PARA CADASTRAR OFERTA )  --}}
+  @if($membro->nome <> 'OFERTANTES')
     <tr style="text-decoration: {{ $ativo }}; color:{{ $color }}; ">
       <th scope="row" >{{ $i ++ }}</th>
       <td>
@@ -57,6 +58,7 @@
       <td>{{ date('Y', strtotime($membro->dataMembro)) }}</td>
       <td><a style="font-size:10px" href="/membros/edit/{{ $membro->id }}" class="btn btn-info"><ion-icon name="pencil">Editar</ion-icon></a></td>
     </tr>
+    @endif 
     @endforeach
   </tbody>
 </table>

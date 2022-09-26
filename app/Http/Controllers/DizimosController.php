@@ -42,7 +42,7 @@ class DizimosController extends Controller
 
         $dizimos->save();
 
-        return redirect('/dashboard')->with('msg', 'Dizimos cadastrador com Sucesso!');
+        return redirect('/dizimoCadastroIndex')->with('msg', 'Dizimos cadastrador com Sucesso!');
 
 
     }
