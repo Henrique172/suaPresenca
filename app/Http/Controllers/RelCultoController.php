@@ -87,4 +87,30 @@ class RelCultoController extends Controller
         // dd($consulta['consultaRelCulto']);
 
     }
+
+    public function relId(Request $request){
+        
+        $model = new RelCulto;
+        $consulta = $model->relId($request);
+
+
+        if(isset($consulta[0])){
+            
+
+            $pdf = PDF::loadView('relCulto.relatorio.pdf', compact('consulta'));
+            
+            // dd($consulta);
+            // Montando nome do pdf a ser salvo
+            $nomeRelatorio = 'Relatorio de Culto + Dizimo';
+
+    
+                
+                return $pdf->setPaper('a4')->stream($nomeRelatorio);
+
+
+
+        }
+        // dd($consulta);
+
+    }
 }

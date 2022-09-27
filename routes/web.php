@@ -63,6 +63,7 @@ Route::get('/relIndex', [RelCultoController::class, 'index'])->middleware('auth'
 Route::post('/relCultoAdd', [RelCultoController::class, 'add'])->middleware('auth'); 
 Route::get('/relCultoIndex', [RelCultoController::class, 'relatorioIndex'])->middleware('auth'); 
 Route::post('/relCultoDizimo', [RelCultoController::class, 'relCultoDizimo'])->middleware('auth'); 
+Route::get('/relId/{id}', [RelCultoController::class, 'relId'])->middleware('auth'); 
 // Route::get('/relCulto', [RelCultoController::class, 'index']); 
 
 // Route::middleware([

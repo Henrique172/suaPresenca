@@ -33,7 +33,7 @@
                     <th scope="col">Total Presentes</th>
                     <th scope="col">Horario</th>
                     <th scope="col">Data</th>
-                    <th scope="col">-</th>
+                    <th scope="col">---------</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,13 +48,13 @@
                     <td style="text-align: center">{{ $dados->qtds_membros + $dados->visitantes }}</td>
                     <td>{{ $dados->horario }}</td>
                     <td>{{ $data->format('d/m/Y') }}</td>
-                    <td>
-                        <button type="button" class="btn btn-success">
-                            <i class="bi bi-chat-right-text"></i>
-                          </button>
-                        <button type="button" class="btn btn-warning">
-                          </button>
-                    </td>
+                    <td>        
+                        <div class="form-group" >
+
+                            <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a>
+                            <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-warning">Editar</a>
+                        </div>
+                        </td>
                   </tr>
                   @endforeach
                 </tbody>

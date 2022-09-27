@@ -12,7 +12,7 @@ class RelCulto extends Model
     use HasFactory;
     protected $table = 'relCultos';
 
-    public function relCultoDizimo($request){
+    public function relCultoDizimo($request){   
        $data = new DateTime($request->data);
         // dd($data->format('Y-m-d'));
         
@@ -30,6 +30,31 @@ class RelCulto extends Model
 
         return($consulta);
        
+    }
+
+    public function relId($request){
+        $find = Model::find($request->id);
+
+        // dd($find);
+
+        $data = new DateTime($find->data);
+        // dd($data->format('Y-m-d'));
+        
+        $consulta = DB::table('relCultos')
+        ->leftjoin('dizimos', 'relCultos.data', '=','dizimos.data')
+        ->leftjoin('membros', 'dizimos.membro_id', '=','membros.id')
+        ->where('relCultos.data', $data->format('Y-m-d'))
+        ->get();
+
+        // $consultaDizimos = DB::table('dizimos')
+        // ->where('dizimos.data', $data->format('Y-m-d'))
+        // ->get();
+
+        // dd($consulta);
+
+        return($consulta);
+
+
     }
 
 }
