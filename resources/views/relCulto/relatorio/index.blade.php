@@ -33,7 +33,7 @@
                     <th scope="col">Total Presentes</th>
                     <th scope="col">Horario</th>
                     <th scope="col">Data</th>
-                    <th scope="col">---------</th>
+                    <th scope="col">----------------------</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -52,7 +52,7 @@
                         <div class="form-group" >
 
                             <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a>
-                            <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-warning">Editar</a>
+                            <a href="/rel/edit/{{$dados->id}}" style="font-size:10px" class="btn btn-warning">Editar</a>
                         </div>
                         </td>
                   </tr>

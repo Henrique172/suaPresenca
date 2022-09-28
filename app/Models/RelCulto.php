@@ -10,6 +10,8 @@ use DateTime;
 class RelCulto extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
     protected $table = 'relCultos';
 
     public function relCultoDizimo($request){   

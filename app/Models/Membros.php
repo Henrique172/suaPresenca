@@ -48,14 +48,6 @@ class Membros extends Model
 
     public function calcularIdade($find){
 
-
-
-
-        
-        
-        
-        
-        
         $count = 0;
         foreach ($find as $dados){
             

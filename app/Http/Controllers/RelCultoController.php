@@ -16,6 +16,21 @@ class RelCultoController extends Controller
         return view('relCulto.cadastro');
     }
 
+    public function edit($id){ 
+        $relatorio = RelCulto::findOrFail($id);
+
+        // dd($relatorio);
+
+        return view ('relCulto.edit', ['relatorio' => $relatorio]);
+    }
+
+    public function update(Request $request){
+        // dd($request->id);
+        RelCulto::findOrFail($request->id)->update($request->all());
+
+        return redirect('/relCultoIndex')->with('msg', 'Relatorio Editado !');
+    }
+
     public function add(request $request){
         $model = new RelCulto;
         
