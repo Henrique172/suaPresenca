@@ -1,11 +1,12 @@
 @extends('dashboard.main')
 @section('title', 'Dashboard Sua Presença')
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" >
 
 @section('contentDashboard')
     <div class="row">
-        <div class="col-sm-12" style="margin-top:15px">
-             <div class="col-sm-6 " style="margin:0 auto; ">
-                <h1 class="text-center" style="color:#AAA">RELATÓRIO DE CULTO</h1>
+        <div class="col-sm-12 text-center" style="margin-top:15px">
+             <div class="col-sm-12" style="margin:0 auto; ">
+                <h1 class="text-center" style="color:#AAA; ">RELATÓRIO DE CULTO</h1>
             </div>
             <div class="col-sm-6 " >
                 
@@ -14,13 +15,7 @@
                 <br/>
                 
             </div>
-            <div class="col-sm-10" id="menuRelatorio">
-
-
-
-
-                
-
+            <div class="col-sm-12" id="menuRelatorio">
 
 
             <table class="table" >
@@ -57,8 +52,10 @@
                         </td>
                   </tr>
                   @endforeach
+
                 </tbody>
-              </table>
+            </table>
+            {{ $find->links() }}
               
 
 

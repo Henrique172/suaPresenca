@@ -12,6 +12,8 @@
             <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
             
             {{-- bootstrap --}}
+            {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+      
             {{-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" > --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"  >
 

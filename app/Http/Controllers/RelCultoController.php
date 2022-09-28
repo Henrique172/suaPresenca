@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\RelCulto; 
 use PDF;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
+
 
 class RelCultoController extends Controller
 {
@@ -68,7 +71,11 @@ class RelCultoController extends Controller
         // dd(date('Y-m-d'));
     }
     public function relatorioIndex() {
-        $find = RelCulto::all()->sortByDesc("data");
+
+        // $find = RelCulto::all()->sortByDesc("data")->Paginate(10);
+        $find = DB::table('relCultos')->orderByDesc("relCultos.data")->paginate(10);
+        // $find = RelCulto::all()->sortByDesc("data")->Paginate(10);
+
         // dd($find);  
 
         return view('relCulto.relatorio.index',['find' => $find]);
