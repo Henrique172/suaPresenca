@@ -68,7 +68,7 @@ class RelCultoController extends Controller
         // dd(date('Y-m-d'));
     }
     public function relatorioIndex() {
-        $find = RelCulto::all()->sortBy("data");
+        $find = RelCulto::all()->sortByDesc("data");
         // dd($find);  
 
         return view('relCulto.relatorio.index',['find' => $find]);
