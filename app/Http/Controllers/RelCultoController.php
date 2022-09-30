@@ -59,9 +59,9 @@ class RelCultoController extends Controller
 
             
             if($model->save()){
-                return redirect('/dashboard')->with('msg', 'Relatorio registrado');
+                return redirect('/relCultoIndex')->with('msg', 'Relatorio registrado');
             }else{
-                return redirect('/dashboard')->with('msg', 'Erro ao adicionar Relatorio, Repita Operacao!');
+                return redirect('/relCultoIndex')->with('msg', 'Erro ao adicionar Relatorio, Repita Operacao!');
                 
             }
         }

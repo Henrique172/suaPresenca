@@ -59,6 +59,17 @@ class RelCulto extends Model
 
     }
 
+    public function contaDias(){
+
+        $dataHoje = new dateTime();
+        $dataCadastro = new dateTime($dados->data);
+        
+        $diferenca = strtotime($dataHoje->format('d-m-Y')) - strtotime($dataCadastro->format('d-m-Y'));
+        $dias = floor($diferenca / (60 * 60 * 24)); 
+
+
+    }
+
 }
 
 

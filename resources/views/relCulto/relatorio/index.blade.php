@@ -47,7 +47,19 @@
                         <div class="form-group" >
 
                             <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a>
+                            
+                            {{-- FUNCAO PARA DEIXAR BOTAO DE EDITAR SO 2 DIAS E DEPOIS SOME --}}
+                            @php 
+                                $dataHoje = new dateTime();
+                                $dataCadastro = new dateTime($dados->data);
+                                
+                                $diferenca = strtotime($dataHoje->format('d-m-Y')) - strtotime($dataCadastro->format('d-m-Y'));
+                                $dias = floor($diferenca / (60 * 60 * 24)); 
+
+                            @endphp
+                            @if($dias <= 2)
                             <a href="/rel/edit/{{$dados->id}}" style="font-size:10px" class="btn btn-warning">Editar</a>
+                            @endif
                         </div>
                         </td>
                   </tr>
