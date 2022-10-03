@@ -30,6 +30,7 @@ $repeticao = 1;
 		<br />
 		<br />
 		<table class='table' >
+			<b> Quantidade de Membros: {{ count($find) }}</b> 
 			<tr >
 				<th>NOME</th>
 				<th style="transform: rotate(90deg); font-size:10.5px; width:50px; padding-bottom:20">{{date("d/m/Y")}}</th>
