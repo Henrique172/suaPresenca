@@ -68,6 +68,25 @@
                                     <a class="nav-link" href="/relCultoIndex">Relatorio</a>
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#patrimonio" aria-expanded="false" aria-controls="">
+                                    Patrimonio  </a>
+
+                            <div class="collapse" id="patrimonio" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">Adicionar</a>
+                                    <a class="nav-link" href="#">Relatorio</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#escala" aria-expanded="false" aria-controls="">
+                                    Escala  </a>
+
+                            <div class="collapse" id="escala" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">10 Minutos</a>
+                                    <a class="nav-link" href="#">Ativaçao Prefetica</a>
+                                    <a class="nav-link" href="#">Limpeza</a>
+                                </nav>
+                            </div>
 
 
                         </div>
