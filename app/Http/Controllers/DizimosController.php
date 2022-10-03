@@ -40,9 +40,14 @@ class DizimosController extends Controller
         $dizimos->tipo = $request->tipo;
         $dizimos->data =  date_create_from_format("d/m/Y", $request->data);
 
-        $dizimos->save();
+        if($dizimos->membro_id){
+            return redirect('/dizimoCadastroIndex')->with('msg', 'Dizimos cadastrador com Sucesso!');
 
-        return redirect('/dizimoCadastroIndex')->with('msg', 'Dizimos cadastrador com Sucesso!');
+        }else{
+
+            return redirect('/dizimoCadastroIndex')->with('msgErro', 'ERRO! Selecione o Membro.');
+        }
+
 
 
     }

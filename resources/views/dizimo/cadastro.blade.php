@@ -13,7 +13,7 @@
         @csrf
 
         <div class="col-sm-5" style=" margin: 0 auto">
-          <select name='membro_id' class="form-control">
+          <select name='membro_id' class="form-control" required>
             <option  disabled selected>Selecione o Membro</option>
             @foreach($membros as $value)
             <p>--------------------------</p>
