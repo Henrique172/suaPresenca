@@ -16,7 +16,7 @@
 
             // dd($data);
             @endphp
-            <img src="{{ public_path(). $image }}" alt="" width="100%">
+            <img src="{{ public_path(). $image }}" alt="" width="100%" height="50%">
             <div class="fundo">
                 <h1 style="text-align:center; font-size:17px">  RELATORIO DE CULTO + DIZIMOS <br />{{  strftime('%A %d de %B de %Y', strtotime($data->format('m/d/Y'))); }}</h1>
             <hr/>
@@ -47,6 +47,10 @@
 
                      @foreach($consulta as $find)
                      {{-- @php if($find->valor <> ''):@endphp --}}
+                     @if($i == 7)
+                     {{-- @php dd($find); @endphp --}}
+                     <div style="display: block; page-break-before: always;"></div>
+                     @endif
                             <tr>
                                 <td scope="row">{{$i ++ }}</td>
                                 <td>{{$find->nome}}</td>
@@ -92,7 +96,7 @@
     margin-top:500px;
 } */
 .fundo{
-    margin-top: -950px;
+    margin-top: -500px;
 } 
 .relatorioCulto b{
     padding: 10px; 
@@ -115,6 +119,7 @@
 .assinatura{
     text-align:center;
 }
+
 
 </style>
 
