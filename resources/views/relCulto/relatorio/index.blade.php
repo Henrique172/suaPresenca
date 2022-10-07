@@ -3,8 +3,8 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" >
 
 @section('contentDashboard')
+<div class="col-sm-12 text-center" style="margin-top:15px">
     <div class="row">
-        <div class="col-sm-12 text-center" style="margin-top:15px">
              <div class="col-sm-12" style="margin:0 auto; ">
                 <h1 class="text-center" style="color:#AAA; ">RELATÓRIO DE CULTO</h1>
             </div>
@@ -28,7 +28,7 @@
                     <th scope="col">Total Presentes</th>
                     <th scope="col">Horario</th>
                     <th scope="col">Data</th>
-                    <th scope="col" >----------------------</th>
+                    <th scope="col" >Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,18 +44,33 @@
                     <td>{{ $dados->horario }}</td>
                     <td>{{ $data->format('d/m/Y') }}</td>
                     <td>        
-                        <div class="form-group" >
+                        {{-- <div class="form-group" > --}}
+
+
+                            <!-- Primary -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-expanded="false">
+                            PDF 
+                            </button>
+                            <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="relId/{{$dados->id}}">Normal</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="relMeia/{{$dados->id}}">Meia Folha</a>
+                            </ul>
+                        </div>
+
 
                             {{-- <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a> --}}
-                            <div class="dropdown" >
-                                <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  PDF
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {{-- <div class="dropdown" >
+                            <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-toggle="dropdown" >
+                                PDF
+                            </button>
+                                <div class="dropdown-menu">
                                   <a class="dropdown-item" href="relId/{{$dados->id}}">Normal</a>
+                                  <div class="dropdown-divider"></div>
                                   <a class="dropdown-item" href="relMeia/{{$dados->id}}">Meia Folha</a>
                                 </div>
-                              
+                               --}}
                             
                             {{-- FUNCAO PARA DEIXAR BOTAO DE EDITAR SO 2 DIAS E DEPOIS SOME --}}
                             @php 
