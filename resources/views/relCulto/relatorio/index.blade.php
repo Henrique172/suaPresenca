@@ -49,7 +49,7 @@
                             {{-- <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a> --}}
                             <div class="dropdown" >
                                 <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  PDFF
+                                  PDF
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item" href="relId/{{$dados->id}}">Normal</a>
