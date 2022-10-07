@@ -44,12 +44,12 @@
                     <td>{{ $dados->horario }}</td>
                     <td>{{ $data->format('d/m/Y') }}</td>
                     <td>        
-                        {{-- <div class="form-group" > --}}
+                        <div class="form-group" >
 
                             {{-- <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a> --}}
                             <div class="dropdown" >
                                 <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  PDF
+                                  PDFF
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item" href="relId/{{$dados->id}}">Normal</a>
@@ -70,7 +70,7 @@
                             <a href="/rel/edit/{{$dados->id}}" style="font-size:10px" class="btn btn-warning">Editar</a>
                             @endif
                         </div>
-                        {{-- </div> --}}
+                        </div>
                         </td>
                   </tr>
                   @endforeach
