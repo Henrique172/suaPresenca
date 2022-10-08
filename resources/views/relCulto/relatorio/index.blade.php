@@ -47,9 +47,22 @@
                         {{-- <div class="form-group" > --}}
 
 
+
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">PDF
+                                <span class=""></span></button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="relId/{{$dados->id}}">Normal</a></li>
+                                  <li role="presentation" class="divider"></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="relMeia/{{$dados->id}}">Meia Folha</a></li>
+                                </ul>
+                             
+
+
+
                             <!-- Primary -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-expanded="false">
+                        {{-- <div class="btn-group">
+                            <button onclick = "myfunction()" type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-expanded="false">
                             PDF 
                             </button>
                             <ul class="dropdown-menu">
@@ -57,20 +70,9 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="relMeia/{{$dados->id}}">Meia Folha</a>
                             </ul>
-                        </div>
+                        </div> --}}
 
 
-                            {{-- <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a> --}}
-                            {{-- <div class="dropdown" >
-                            <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-toggle="dropdown" >
-                                PDF
-                            </button>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="relId/{{$dados->id}}">Normal</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="relMeia/{{$dados->id}}">Meia Folha</a>
-                                </div>
-                               --}}
                             
                             {{-- FUNCAO PARA DEIXAR BOTAO DE EDITAR SO 2 DIAS E DEPOIS SOME --}}
                             @php 
@@ -86,6 +88,7 @@
                             @endif
                         </div>
                         </div>
+                    </div>
                         </td>
                   </tr>
                   @endforeach
@@ -158,3 +161,9 @@
     }
 
 </style>
+
+<script>
+    $(document).ready(function(){
+      $(".dropdown-toggle").dropdown();
+    });
+    </script>
