@@ -164,6 +164,6 @@
 
 <script>
     $(document).ready(function(){
-      $(".dropdown-toggle").dropdown();
+      $(".dropdown-toggle").dropdown open();
     });
     </script>
