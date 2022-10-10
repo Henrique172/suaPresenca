@@ -53,7 +53,7 @@
                      @endif
                             <tr>
                                 <td scope="row">{{$i ++ }}</td>
-                                <td>{{$find->nome}}</td>
+                                <td>{{mb_strtoupper($find->nome)}}</td>
                                 <td>R$ {{number_format($find->valor ,2,",",".")}}</td>
                                 <td>{{$find->tipo == 0 ? 'Oferta': 'Dizimo'}}</td>
                             </tr>
