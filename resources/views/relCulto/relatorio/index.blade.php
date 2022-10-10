@@ -1,8 +1,8 @@
 @extends('dashboard.main')
 @section('title', 'Dashboard Sua Presença')
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" >
-<script language="JavaScript" src="script/jquery.js" type="text/javascript"></script>
-<script language="JavaScript" src="bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 @section('contentDashboard')
 <div class="col-sm-12 text-center" style="margin-top:15px">
     <div class="row">
@@ -29,7 +29,7 @@
                     <th scope="col">Total Presentes</th>
                     <th scope="col">Horario</th>
                     <th scope="col">Data</th>
-                    <th scope="col" >Ações</th>
+                    <th scope="col" style="width:150px">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,32 +46,16 @@
                     <td>{{ $data->format('d/m/Y') }}</td>
                     <td>        
                         {{-- <div class="form-group" > --}}
+                            <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-bs-toggle="collapse" data-bs-target="#collapsePdf{{$dados->id}}"  >PDF</button>
+                            {{-- <button class="nav-link collapsed"  class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#collapsePdf" aria-expanded="false" aria-controls=""> --}}
+                                {{-- PDF  </button> --}}
 
-
-                            <!-- Primary -->
-                        <div class="btn-group">
-                            <button onclick = "myfunction()" type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-expanded="false">
-                            PDF 
-                            </button>
-                            <ul class="dropdown-menu">
-                            <a class="dropdown-item" href="relId/{{$dados->id}}">Normal</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="relMeia/{{$dados->id}}">Meia Folha</a>
-                            </ul>
+                        <div class="collapse" id="collapsePdf{{$dados->id}}" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav" style="font-size: 10px; padding-top:10px">
+                                <a class=" btn btn-primary"  href="relMeia/{{$dados->id}}">Meia Página</a>
+                                <a class=" btn btn-danger" href="relId/{{$dados->id}}">Normal</a>
+                            </nav>
                         </div>
-
-
-                            {{-- <a href="relId/{{$dados->id}}" style="font-size:10px" class="btn btn-success">PDF</a> --}}
-                            {{-- <div class="dropdown" >
-                            <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-toggle="dropdown" >
-                                PDF
-                            </button>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="relId/{{$dados->id}}">Normal</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="relMeia/{{$dados->id}}">Meia Folha</a>
-                                </div>
-                               --}}
                             
                             {{-- FUNCAO PARA DEIXAR BOTAO DE EDITAR SO 2 DIAS E DEPOIS SOME --}}
                             @php 
@@ -102,6 +86,26 @@
     </div>
 </div>
 
+
+<script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){
+        $("#myModal").modal();
+      });
+    });
+    </script>
+    
+
+
+
+  
+</div>
+
+
+
+
+
+
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
@@ -118,6 +122,9 @@
         });
     }
     </script>
+
+
+
     @endsection
 
 <style>
@@ -160,8 +167,16 @@
 
 </style>
 
-<script>
-    $(document).ready(function(){
-      $(".dropdown-toggle").dropdown();
-    });
-    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
