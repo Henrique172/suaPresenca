@@ -16,7 +16,7 @@
             <br />
             @php $valor = 0; @endphp
             @foreach($consulta as $find)
-            @php $date = new dateTime($find->data)  @endphp
+            @php $date = new dateTime($find->data_dizimo)  @endphp
             <ul>
                 <li><b>{{ $find->nome }}</b>{{ $find->tipo == 0?' Oferta':' Dizimo' }} no Valor de <b>R$ {{number_format($find->valor ,2,",",".")}}</b>  no dia  {{ $date->format('d/m/Y') }}</li>
             </ul>

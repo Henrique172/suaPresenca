@@ -43,7 +43,7 @@ class RelCulto extends Model
         // dd($data->format('Y-m-d'));
         
         $consulta = DB::table('relCultos')
-        ->leftjoin('dizimos', 'relCultos.data', '=','dizimos.data')
+        ->leftjoin('dizimos', 'relCultos.data', '=','dizimos.data_dizimo')
         ->leftjoin('membros', 'dizimos.membro_id', '=','membros.id')
         ->where('relCultos.data', $data->format('Y-m-d'))
         ->get();

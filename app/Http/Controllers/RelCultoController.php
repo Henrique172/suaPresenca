@@ -132,6 +132,9 @@ class RelCultoController extends Controller
         
         $model = new RelCulto;
         $consulta = $model->relId($request);
+        // $consulta = $consulta['consulta'];
+
+        // dd($consulta);
 
         if(isset($consulta[0])){
             $pdf = PDF::loadView('relCulto.relatorio.pdfMeiaFolha', compact('consulta'));

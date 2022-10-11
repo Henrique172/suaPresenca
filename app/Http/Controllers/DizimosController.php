@@ -38,7 +38,7 @@ class DizimosController extends Controller
         $dizimos->membro_id = $request->membro_id;
         $dizimos->valor = $precoSemVirgula;
         $dizimos->tipo = $request->tipo;
-        $dizimos->data =  date_create_from_format("d/m/Y", $request->data);
+        $dizimos->data_dizimo =  date_create_from_format("d/m/Y", $request->data);
 
         if($dizimos->membro_id){
             $dizimos->save();
@@ -99,7 +99,7 @@ class DizimosController extends Controller
 
         $pdf = PDF::loadView('dizimo.relatorio.pdfMensal', compact('consulta'));
         
-        $data = new dateTime($consulta[0]->data);
+        $data = new dateTime($consulta[0]->data_dizimo);
         
         // Montando nome do pdf a ser salvo
         $nomeRelatorio = 'Relatorio_mensal_mes_'.$data->format('m').'_'. $data->format('Y');

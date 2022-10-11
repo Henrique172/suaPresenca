@@ -47,8 +47,8 @@ class Dizimos extends Model
         // ->where('data', '>=', $dataOne->format('Y-d-m'))
         // ->where('data', '=', $dataTwo->format('Y-d-m'))
         ->join('membros', 'membros.id', '=', 'dizimos.membro_id') 
-        ->whereBetween('data', [$dataOne->format('Y-m-d'), $dataTwo->format('Y-m-d')])
-        ->orderBy('data')
+        ->whereBetween('data_dizimo', [$dataOne->format('Y-m-d'), $dataTwo->format('Y-m-d')])
+        ->orderBy('data_dizimo')
         ->get();
 
         //  dd($consulta);
