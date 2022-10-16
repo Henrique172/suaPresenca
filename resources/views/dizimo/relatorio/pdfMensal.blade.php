@@ -24,7 +24,7 @@
             @php 
             $date = new dateTime($find->data_dizimo)  @endphp
             <ul>
-                <li><b>{{ $find->nome }}</b> Valor de <b>R$ {{number_format($find->valor ,2,",",".")}}</b>  no dia  {{ $date->format('d/m/Y') }}</li>
+                <li><b>{{ mb_strtoupper($find->nome) }}</b> Valor de <b>R$ {{number_format($find->valor ,2,",",".")}}</b>  no dia  {{ $date->format('d/m/Y') }}</li>
             </ul>
             @php
            
