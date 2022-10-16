@@ -6,13 +6,18 @@
     @php
 
             $image = '/img/papelTimbrado.jpg';
-            $data = new dateTime(!$consulta ? $consulta[0]->data :'');
+            $data = new dateTime($consulta ? $consulta[0]->data_dizimo :'');
+
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+            // dd($data);
+            strftime('%A %d de %B de %Y', strtotime($data->format('m/d/Y')))
 
     @endphp
             <img src="{{ public_path(). $image }}" alt="" width="100%">
         <div class="fundo">
             
-            <h1 style="text-align:center"> {{ isset($consulta[0]) ?  'Relatorio de Dizimos do mes '. $data->format('m'). ' de '. $data->format('Y') : 'Nao a dizimo cadastrado nesse mes' }}</h1>
+            <h1 style="text-align:center"> {{ isset($consulta[0]) ?  'Relatorio de Dizimos do Mês de  '.strftime('%B de %Y', strtotime($data->format('m/d/Y'))) : 'Nao a dizimo cadastrado nesse mes' }}</h1>
             <br />
             @php $valor = 0; @endphp
             @foreach($consulta as $find)
