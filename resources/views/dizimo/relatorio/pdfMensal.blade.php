@@ -17,7 +17,7 @@
             <img src="{{ public_path(). $image }}" alt="" width="100%">
         <div class="fundo">
             
-            <h1 style="text-align:center"> {{ isset($consulta[0]) ?  'Relatorio de Dizimos do Mês de  '.strftime('%B de %Y', strtotime($data->format('m/d/Y'))) : 'Nao a dizimo cadastrado nesse mes' }}</h1>
+            <h1 style="text-align:center"> {{ isset($consulta[0]) ?  'Relatório Dizimos/Ofertas '.strftime('%B de %Y', strtotime($data->format('m/d/Y'))) : 'Nao a dizimo cadastrado nesse mes' }}</h1>
             <br />
             @php $valor = 0; @endphp
             @foreach($consulta as $find)
