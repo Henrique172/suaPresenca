@@ -110,8 +110,12 @@
 .table{
     /* text-align: center */
 }
+.total {
+    font-size: 13px;
+}
 .total b{
-    padding-left: 20px
+    padding-left: 15px;
+    font-size: 14px;
 }
 .assinatura b{
     padding-left: 20px;
