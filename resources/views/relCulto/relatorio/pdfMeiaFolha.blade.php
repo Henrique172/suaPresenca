@@ -69,7 +69,7 @@
                             <b>Total Dizimo: </b>R$ {{number_format($totalDizimo, 2,",",".")}}
                             <b>Total Oferta: </b>R$ {{number_format($totalTotal, 2,",",".")}}
                             <b>Total Arrecadado: </b>R$ {{number_format($totalArrecadado, 2,",",".")}}
-                            <b>10% Davi Rebollo: </b>R$ {{number_format($totalDizimo * 10 / 100, 2,",",".")}}
+                           
                         </div>
                         <br />
                         <br />
@@ -111,11 +111,11 @@
     /* text-align: center */
 }
 .total {
-    font-size: 13px;
+    font-size: 15px;
 }
 .total b{
-    padding-left: 15px;
-    font-size: 14px;
+    padding-left: 25px;
+    font-size: 17px;
 }
 .assinatura b{
     padding-left: 20px;
