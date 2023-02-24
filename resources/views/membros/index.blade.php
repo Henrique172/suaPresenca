@@ -39,11 +39,21 @@
       $ativo = $membro->status == 1? 'line-through': '';
       $color = $membro->status == 1? 'red':'';
       $inativo = $membro->status == 1? 'Inativo':'Ativo';
-      // dd($pintaCrianca);
-    @endphp
+
+      $dataNasc = new datetime($membro->dataNascimento);
+      $date = $dataNasc->format('Y');
+
+      
+
+      // dd(date('Y')  - $date < 10);
+
+      $corCrianca = date('Y')  - $date < 10 ? '#add8e6':'';
+      @endphp
     {{-- ##TIRANDO O OFERTANTE DA LISTA DE MEMBROS( SO SERVE PARA CADASTRAR OFERTA )  --}}
-  @if($membro->nome <> 'OFERTANTES')
-    <tr style="text-decoration: {{ $ativo }}; color:{{ $color }}; ">
+    @if($membro->nome <> 'OFERTANTES')
+    <tr style="text-decoration: {{ $ativo }}; 
+                color:{{ $color }}; 
+                background-color: {{ $corCrianca}}">
       <th scope="row" >{{ $i ++ }}</th>
       <td>
           <a href="img/membros/{{$membro->foto}}">
