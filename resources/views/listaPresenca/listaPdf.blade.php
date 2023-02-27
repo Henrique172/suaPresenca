@@ -12,8 +12,9 @@
 <img src="{{ public_path($image) }}"  width="100%" />
 
 <div class="fundo">
-	<h2>LISTA DE PRESENCA DE <?= strftime('%A', strtotime($data->format('m/d/Y'))) == 'Domingo'? 'TODOS OS': 'TODAS AS' ?>  {{ strtoupper( strftime('%A', strtotime($data->format('m/d/Y')))); }} DO MES</h2>
+	<h2>LISTA DE PRESENÇA DE <?= strftime('%A', strtotime($data->format('m/d/Y'))) == 'domingo'? 'TODOS OS': 'TODAS AS' ?>  {{ strtoupper( strftime('%A', strtotime($data->format('m/d/Y')))); }} DO MES</h2>
 	@php 
+	// dd(strftime('%A', strtotime($data->format('m/d/Y'))));
 $timestamp = strtotime("+7 days");
 $data    = date("Y/m/d");
 $dataSemana = date("d-m-Y", strtotime($data) + (7 * 24 * 60 * 60));
@@ -41,8 +42,15 @@ $repeticao = 1;
 					{{-- <th>NAO</th> --}}
 				</tr>
 				@foreach ($find as  $value):
-				
-			   <tr >
+				@php 
+				$dataNasc = new datetime($value->dataNascimento);
+				$date = $dataNasc->format('Y');
+				$corCrianca = date('Y')  - $date < 10 ? '#add8e6':'';
+				@endphp
+
+			{{-- ESSE IF ABAIXO SERVE PARA TIRAR O OFERTANTES DA LISTA DE MEMBRO --}}
+				@if($value->nome <> 'OFERTANTES')
+			   <tr style=" background-color: {{ $corCrianca}}">
 				   <td style='width:460px; font-size:11px'>{{mb_strtoupper($value->nome)}}</td> </td>
 				   <td ></td>
 				   <td></td>
@@ -51,6 +59,7 @@ $repeticao = 1;
 				   <td>
 					   
 				   </td>
+				   @endif
 				   @endforeach
 			   </tr> 
 		</table>
