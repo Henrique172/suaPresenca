@@ -26,10 +26,11 @@ $dataQuatroSemana = date("d-m-Y", strtotime($dataTresSemana) + (7 * 24 * 60 * 60
 $repeticao = 1;
 @endphp
 <div class="row">
+	<b style="margin-left: 350px">LEGENDAS: <span style="color:rgb(49, 158, 6)">P</span> = Presença <span style="color:red">F</span> = Falta <span style="color:rgb(255, 255, 4)">V</span> = Viajando</b>
 	<div class='col-sm-8 col-md-8'>
 		<br />
 		<br />
-		<br />
+		<br />	
 		<table class='table' >
 			<b> Quantidade de Membros: {{ count($find) }}</b> 
 			<tr >
@@ -89,7 +90,7 @@ $repeticao = 1;
 	}
 	
 	.fundo{
-		margin-top: -980px;
+		margin-top: -1030px;
 		/* background-image: "/img/papelTimbrado.jpg"; */
 } 
 
