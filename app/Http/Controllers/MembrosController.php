@@ -17,12 +17,11 @@ class MembrosController extends Controller
 
         $models = new Membros;
         
-        $find = Membros::all()->sortBy("nome");
+        $find = Membros::where('status', '<>', 1)
+              ->orderBy('nome')
+              ->get();
 
        $qntdCrianca = $models->calcularIdade($find);
-
-    //    dd($idade);
-
 
         return view('membros.index', ['find' => $find, 'qntdCrianca'=> $qntdCrianca]);
     }

@@ -12,7 +12,7 @@
   @endauth
 <div class="col-md-12">
   {{-- ESSE - 1 (ABAIXO)E DO OFERTANTE QUE ESTA CADASTRADO NA LISTA DE MEMBROS --}}
- <b style="padding-left: 20px;"> Membros:</b> {{ count($find) - $qntdCrianca - 1 }}  <b style="padding-left: 80px;"> Crianças:</b> {{ $qntdCrianca }}
+ <b style="padding-left: 20px;"> Membros ativos:</b> {{ count($find) - $qntdCrianca - 1 }}  <b style="padding-left: 80px;"> Crianças:</b> {{ $qntdCrianca }}
 </div>
 
 <table class="table col-md-12" id="tableMembro">
