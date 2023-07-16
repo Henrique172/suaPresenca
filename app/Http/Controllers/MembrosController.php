@@ -16,14 +16,21 @@ class MembrosController extends Controller
     public function index(){
 
         $models = new Membros;
+         $find = Membros::all()->sortBy("nome");
+         
+         $membrosInativo = Membros::where('status', '=', 1)->get();
+        //  dd($membroInativo);
+        // dd(count($find));
+ 
         
-        $find = Membros::where('status', '<>', 1)
-              ->orderBy('nome')
-              ->get();
-
+        // $find = Membros::where('status', '<>', 1)
+        //       ->orderBy('nome')
+        //       ->get();
        $qntdCrianca = $models->calcularIdade($find);
 
-        return view('membros.index', ['find' => $find, 'qntdCrianca'=> $qntdCrianca]);
+
+
+        return view('membros.index', ['find' => $find, 'qntdCrianca'=> $qntdCrianca, 'membrosInativo' => $membrosInativo]);
     }
 
     public function add (Request $request){
