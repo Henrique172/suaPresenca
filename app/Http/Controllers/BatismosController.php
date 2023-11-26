@@ -29,7 +29,7 @@ class BatismosController extends Controller
         $membros = new Membros();
         
         $consulta = $membros->relatorioBatizdo($request);
-        // dd($consulta);
+        
 
         $pdf = PDF::loadView('batismos.pdf', compact('consulta'));
         // dd($find);
@@ -50,13 +50,16 @@ class BatismosController extends Controller
         if($request->membro_id){
 
             $consulta =  $membros->find($request->membro_id);
-
+            // dd($consulta);
            $data = new dateTime($consulta->dataBatismo);
         //    dd($data->format('d/m/Y'));
 
             $nomeRelatorio = 'Certificado de Batismo '. $consulta->nome;
             $CertificadosGerados->add($request, $nomeRelatorio, $consulta->id);
             $batismo->atualizar($request);
+
+            // return view('batismos.certificado', ['consulta' => $consulta, 'data' => $data]);
+
 
             $pdf = PDF::loadView('batismos.certificado', compact('consulta', 'data'));
 
