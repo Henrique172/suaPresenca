@@ -3,7 +3,7 @@
 @section('title', 'Membros Sua Presença')
 
 @section('content')
-<h1 class="text-center">Area de membros</h1>
+<h1 class="text-center">Área de Membros</h1>
 
 @auth
   <div class="col-md-10 text-end" style="margin-top:20px; margin-bottom:30px">
@@ -12,7 +12,7 @@
   @endauth
 <div class="col-md-12">
   {{-- ESSE - 1 (ABAIXO)E DO OFERTANTE QUE ESTA CADASTRADO NA LISTA DE MEMBROS --}}
- <b style="padding-left: 20px;"> Membros ativos:</b> {{ count($find) - $qntdCrianca - 1 }}  <b style="padding-left: 80px;"> Crianças:</b> {{ $qntdCrianca }}
+ <b style="padding-left: 20px;"> Membros ativos:</b> {{ count($find) - $qntdCrianca - count($membrosInativo) - 1 }} <b style="padding-left: 20px; color:red"> Membros Inativos:</b> {{ count($membrosInativo) }} <b style="padding-left: 80px; color:blue"> Crianças:</b> {{ $qntdCrianca }}
 </div>
 
 <table class="table col-md-12" id="tableMembro">
@@ -75,3 +75,9 @@
 </table>
 
 @endsection
+
+
+
+
+
+{{-- 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 --}}

@@ -7,31 +7,41 @@ use DateTime;
 
 use App\Models\Membros;
 use App\Models\Dizimos;
+use App\Models\RelCulto;
 use PDF;
 use Decimal\Decimal;
 
 class DizimosController extends Controller
 {
-    public function index(){
-        
+    private $dizimoModel;
+    private $relCultoModel;
 
-        return view('dizimo.index');
+    public function __construct(Dizimos $dizimoModel, RelCulto $relCultoModel)
+    {
+        $this->dizimoModel = $dizimoModel;
+        $this->relCultoModel = $relCultoModel;
     }
-    
-    public function cadastroIndex(){
+    public function index()
+    {
+        return $this->dizimoModel->findAll();
+    }
+
+    public function cadastroIndex()
+    {
 
         $membros = new Membros();
 
         $findMembro = $membros->all();
         // dd($findMembro);
 
-        
+
         return view('dizimo.cadastro', ['membros' => $findMembro]);
     }
 
-    public function add(request $request){ 
-        $preco_corrigido = str_replace(".","",$request->valor );
-        $precoSemVirgula = str_replace(",",".", $preco_corrigido );
+    public function add(request $request)
+    {
+        $preco_corrigido = str_replace(".", "", $request->valor);
+        $precoSemVirgula = str_replace(",", ".", $preco_corrigido);
         // dd(number_format($precoSemVirgula ,2,",",".") );
 
         $dizimos = new Dizimos;
@@ -40,75 +50,73 @@ class DizimosController extends Controller
         $dizimos->tipo = $request->tipo;
         $dizimos->data_dizimo =  date_create_from_format("d/m/Y", $request->data);
 
-        if($dizimos->membro_id){
+        if ($dizimos->membro_id) {
             $dizimos->save();
             return redirect('/dizimoCadastroIndex')->with('msg', 'Dizimos cadastrador com Sucesso!');
-
-        }else{
+        } else {
 
             return redirect('/dizimoCadastroIndex')->with('msgErro', 'ERRO! Selecione o Membro.');
         }
-
-
-
     }
 
-    public function relatorioIndex(){ 
+    public function relatorioIndex()
+    {
 
         $membros = new Membros();
         $findMembro = $membros->all();
 
-        return view('dizimo.relatorio.index', ['membros'=> $findMembro]);
+        return view('dizimo.relatorio.index', ['membros' => $findMembro]);
     }
 
-    public function relatorio(request $request){
+    public function relatorio(request $request)
+    {
 
-       new Membros();
-       $dizimo = new Dizimos();
+        new Membros();
+        $dizimo = new Dizimos();
 
-       $find = Membros::where('id', $request->membro_id);
+        $find = Membros::where('id', $request->membro_id);
 
-    //    dd($request->membro_id);
+        //    dd($request->membro_id);
 
         $consulta = $dizimo->buscar($request->membro_id);
-        
-        // dd($consulta[0]);
-        if(isset($consulta[0])){
 
-                // dd($consulta[0]->nome);
+        // dd($consulta[0]);
+        if (isset($consulta[0])) {
+
+            // dd($consulta[0]->nome);
 
             // Montando nome do pdf a ser salvo
-        $nomeRelatorio = 'Relatorio_'. $consulta[0]->nome;    
+            $nomeRelatorio = 'Relatorio_' . $consulta[0]->nome;
 
             $pdf = PDF::loadView('dizimo.relatorio.pdf', compact('consulta'));
             return $pdf->setPaper('a4')->stream($nomeRelatorio);
-            
+
             // return view('dizimo.relatorio.relatorioMembro', ['consulta' => $consulta]);
-        }else{
+        } else {
             return redirect('/relatorioDizimo')->with('msg', 'Nao ha Dizimos Cadastrado Com Membro!');
         }
     }
-    public function relatorioMes(Request $request){
+    public function relatorioMes(Request $request)
+    {
 
         $model = new Dizimos;
         $consulta = $model->buscarMes($request);
 
-        
-        if(isset($consulta[0])){
-            
 
-        $pdf = PDF::loadView('dizimo.relatorio.pdfMensal', compact('consulta'));
-        
-        $data = new dateTime($consulta[0]->data_dizimo);
-        
-        // Montando nome do pdf a ser salvo
-        $nomeRelatorio = 'Relatorio_mensal_mes_'.$data->format('m').'_'. $data->format('Y');
+        if (isset($consulta[0])) {
 
-            
+
+            $pdf = PDF::loadView('dizimo.relatorio.pdfMensal', compact('consulta'));
+
+            $data = new dateTime($consulta[0]->data_dizimo);
+
+            // Montando nome do pdf a ser salvo
+            $nomeRelatorio = 'Relatorio_mensal_mes_' . $data->format('m') . '_' . $data->format('Y');
+
+
             return $pdf->setPaper('a4')->stream($nomeRelatorio);
-        }else{
+        } else {
             return redirect('/relatorioDizimo')->with('msg', 'Nao ha Dizimos Cadastrado Nessa Data!');
         }
-
     }
 }

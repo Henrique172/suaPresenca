@@ -34,3 +34,10 @@ return new class extends Migration
         Schema::dropIfExists('membros');
     }
 };
+
+
+
+
+// alterar campos de datetime para varchar 
+
+// ALTER TABLE `membros` MODIFY COLUMN `dataMembro` VARCHAR(255) NULL DEFAULT NULL;

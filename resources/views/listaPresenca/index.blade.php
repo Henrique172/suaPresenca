@@ -22,30 +22,10 @@
 						<span class="glyphicon glyphicon-chevron-right" onclick="a()"></span>
 					</span>
 					<ul class="list-group-submenu">
-						{{-- <li class="list-group-submenu-item success"><span class="glyphicon glyphicon-remove"></span></li> --}}
-						<a href="/gerarLista">
-                            <li class="list-group-submenu-item success"><span class="glyphicon glyphicon-ok"></span> Gerar</li>
-                            </a>
-					</ul>
-				</li>
-				<li class="list-group-item">
-					Ver Lista
-					<span class="show-menu">
-						<span class="glyphicon glyphicon-chevron-right" onclick="a()"></span>
-					</span>
-					<ul class="list-group-submenu">
-						<li class="list-group-submenu-item primary"><span class="glyphicon glyphicon-remove"></span></li>
-						<li class="list-group-submenu-item warning"><span class="glyphicon glyphicon-ok"></span></li>
-					</ul>
-				</li>
-				<li class="list-group-item">
-					Grab a Beer with Friends.
-					<span class="show-menu">
-						<span class="glyphicon glyphicon-chevron-right" onclick="a()"></span>
-					</span>
-					<ul class="list-group-submenu">
-						<li class="list-group-submenu-item info"><span class="glyphicon glyphicon-remove"></span></li>
-						<li class="list-group-submenu-item"><span class="glyphicon glyphicon-ok"></span></li>
+						<a href="/gerarLista" target="_blank">
+							<li class="list-group-submenu-item success"><span class="glyphicon glyphicon-ok"></span> Gerar</li>
+						</a>
+						
 					</ul>
 				</li>
 			</ul>

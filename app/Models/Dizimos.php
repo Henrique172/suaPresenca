@@ -2,7 +2,6 @@
 
 namespace App\Models;
 use App\Models\Membros;
-use App\Models\Dizimos;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -54,16 +53,18 @@ class Dizimos extends Model
         //  dd($consulta);
         
 
-        // $consulta = DB::table('membro')
-        // ->join ('dizimo', 'membro.id', '=', 'dizimo.membro_id')
-        // ->where('membro.id', $id)
-        // ->get();
-
         return($consulta);
     }
 
-    public function dataPorExtenso(){
-        
+    public function relCultos()
+    {
+        return $this->belongsTo(RelCulto::class, 'data', 'data');
+    }
+
+
+    public function membro()
+    {
+        return $this->hasOne(Membros::class, 'id', 'membro_id');
     }
  
      

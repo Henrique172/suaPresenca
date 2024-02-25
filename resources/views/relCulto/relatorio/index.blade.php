@@ -45,15 +45,12 @@
                     <td>{{ $dados->horario }}</td>
                     <td>{{ $data->format('d/m/Y') }}</td>
                     <td>        
-                        {{-- <div class="form-group" > --}}
                             <button class="btn btn-success"  type="button" id="dropdownMenuButton" data-bs-toggle="collapse" data-bs-target="#collapsePdf{{$dados->id}}"  >PDF</button>
-                            {{-- <button class="nav-link collapsed"  class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#collapsePdf" aria-expanded="false" aria-controls=""> --}}
-                                {{-- PDF  </button> --}}
 
                         <div class="collapse" id="collapsePdf{{$dados->id}}" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav" style="font-size: 10px; padding-top:10px">
-                                <a class=" btn btn-primary"  href="relMeia/{{$dados->id}}">Meia Página</a>
-                                <a class=" btn btn-danger" href="relId/{{$dados->id}}">Normal</a>
+                                <a class=" btn btn-primary"  href="relMeia/{{$dados->id}}" target="_blank">Meia Página</a>
+                                <a class=" btn btn-danger" href="relId/{{$dados->id}}" target="_blank">Normal</a>
                             </nav>
                         </div>
                             

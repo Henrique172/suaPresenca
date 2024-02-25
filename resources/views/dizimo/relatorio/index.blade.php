@@ -22,7 +22,7 @@
             <button class="accordion">Relatorio por Membro</button>
                 <div class="panel">
 
-                    <form action="/relatorio" method="post">
+                    <form action="/relatorio" method="post" target="_blank">
                         @csrf
                         <select name='membro_id' class="form-control">
                             <option value="0" disabled selected>Selecione o Membros</option>
@@ -30,29 +30,19 @@
                             <option value="{{ $membro->id }}">{{ $membro->nome }}</option>
                             @endforeach
                         </select>
-                         <input type="submit" class="btn btn-primary" value="Buscar">
+                         <input  type="submit" class="btn btn-primary" value="Buscar">
                     </form>
                 </div>
                     <br />
                     <br />
-            <button class="accordion">Relatorio Mensal</button>
-            {{-- @php 
-            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-            date_default_timezone_set('America/Sao_Paulo');
-            echo strftime('%A, %d de %B de %Y', strtotime('today'));
-            @endphp --}}
+            <button class="accordion" target="_blank">Relatorio Mensal</button>
                 <div class="panel">
-                    <form action="/relatorioMes" method="post">
+                    <form action="/relatorioMes" method="post" target="_blank">
                         @csrf
                         <input type="month" name="date">
                          <input type="submit" class="btn btn-primary" value="Buscar">
                     </form>
                 </div>
-
-                    {{-- <button class="accordion">Section 3</button>
-                    <div class="panel">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div> --}}
 
             </div>
         </div>
