@@ -2032,7 +2032,14 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
     {
         return static::$modelsShouldPreventLazyLoading;
     }
-
+    public static function findById($id)
+    {
+        return static::findOrFail($id);
+    }
+    public static function findAll()
+    {
+        return static::all();
+    }
     /**
      * Get the broadcast channel route definition that is associated with the given entity.
      *

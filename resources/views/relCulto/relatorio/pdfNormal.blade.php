@@ -45,23 +45,19 @@
 
 
 
-                     @foreach($consulta as $find)
-                     {{-- @php if($find->valor <> ''):@endphp --}}
-                     @if($i > 6)
-                     {{-- @php dd($find); @endphp --}}
-                    
-                     @endif
+                        @foreach($consulta as $find)
+                        @foreach($find->dizimos as $dizimos)
                             <tr>
                                 <td scope="row">{{$i ++ }}</td>
-                                <td>{{mb_strtoupper($find->nome)}}</td>
-                                <td>R$ {{number_format($find->valor ,2,",",".")}}</td>
+                                <td>{{mb_strtoupper($dizimos->membro->nome)}}</td>
+                                <td>R$ {{number_format($dizimos->valor ,2,",",".")}}</td>
                                 <td>{{$find->tipo == 0 ? 'Oferta': 'Dizimo'}}</td>
                             </tr>
                             @php 
-                                $find->tipo == 1 ? $totalDizimo += $find->valor :  $totalTotal += $find->valor ;                          
-                                $totalArrecadado = $totalArrecadado += $find->valor;
+                                $dizimos->tipo == 1 ? $totalDizimo += $dizimos->valor :  $totalTotal += $dizimos->valor ;                          
+                                $totalArrecadado = $totalArrecadado += $dizimos->valor;
                             @endphp
-                            {{-- @php endif; @endphp --}}
+                            @endforeach
                             @endforeach
                             <br />
                         </table>

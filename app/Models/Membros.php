@@ -46,38 +46,59 @@ class Membros extends Model
         $membro->save();
     }
 
-    public function calcularIdade($find){
+    public function buscaCriancas($find) {
+        $criancas = [];
 
-        $count = 0;
-        foreach ($find as $dados){
-            
-            $convert = new dateTime($dados->dataNascimento);
-            $data = $convert->format('Y-m-d');
-            
-            
-            // separando yyyy, mm, ddd
-            list($ano, $mes, $dia) = explode('-', $data);
-            
-            // data atual
-            $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
-            // Descobre a unix timestamp da data de nascimento do fulano
-            $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
-            
-            // cálculo
-            $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
-            
-            // dd($idade); continue;
-
-            if($idade <  8){
-                $count ++;
+        foreach ($find as $dados) {
+            // Verificar se o nome não é "TESTE"
+            if ($dados->nome !== "OFERTANTES") {
+                $convert = new DateTime($dados->dataNascimento);
+                $data = $convert->format('Y-m-d');
+    
+                // separando yyyy, mm, ddd
+                list($ano, $mes, $dia) = explode('-', $data);
+    
+                // data atual
+                $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+                // Descobre a unix timestamp da data de nascimento do fulano
+                $nascimento = mktime(0, 0, 0, $mes, $dia, $ano);
+    
+                // cálculo
+                $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+    
+                if ($idade < 10) {
+                    $criancas[] = $dados;
+                }
             }
-
         }
-        
-        return $count;
-       
-        // dd($find[0]->dataNascimento);
+    
+        return $criancas;
     }
+    function obterAniversariantesDoMes($pessoas) {
+        $aniversariantes = [];
+    
+        // Obtém o mês atual
+        $mesAtual = date('m');
+    
+        foreach ($pessoas as $pessoa) {
+            // dd($pessoa['dataNascimento']);
+            // Obtém o mês de nascimento da pessoa
+            $mesAniversario = date('m', strtotime($pessoa['dataNascimento']));
+    
+            // Verifica se o mês de nascimento é igual ao mês atual
+            if ($mesAniversario == $mesAtual) {
+                $aniversariantes[] = $pessoa;
+            }
+        }
+    
+        return $aniversariantes;
+    }
+    
+        public function dizimos()
+    {
+        return $this->belongsTo(Dizimos::class, 'membro_id', 'id');
+    }
+    
 
 }
 

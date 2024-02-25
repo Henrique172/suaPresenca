@@ -12,7 +12,8 @@ use DateTime;
 class BatismosController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $membros = new Membros();
         // $findMembro = $membros->where('id', 1)->get();
         $findMembro = Membros::where('certificado', '0')->get();
@@ -21,69 +22,79 @@ class BatismosController extends Controller
         // dd($findMembro);
 
 
-        return view('/batismos.index',['membros'=> $findMembro, 'count'=>$count]);
+        return view('/batismos.index', ['membros' => $findMembro, 'count' => $count]);
     }
 
-    public function relatorio(request $request){ 
+    public function relatorio(request $request)
+    {
 
         $membros = new Membros();
-        
+
         $consulta = $membros->relatorioBatizdo($request);
-        
+
 
         $pdf = PDF::loadView('batismos.pdf', compact('consulta'));
         // dd($find);
-          // Montando nome do pdf a ser salvo
-          $nomeRelatorio = 'Relatorio_de_Batismo';
-          
+        // Montando nome do pdf a ser salvo
+        $nomeRelatorio = 'Relatorio_de_Batismo';
 
-            
-          return $pdf->setPaper('a4')->stream($nomeRelatorio);
+
+
+        return $pdf->setPaper('a4')->stream($nomeRelatorio);
     }
 
-    public function gerarCertificado(request $request){
+    public function gerarCertificado(request $request)
+    {
 
         $membros = new Membros();
         $batismo = new Batismos();
         $CertificadosGerados = new CertificadosGerados();
 
-        if($request->membro_id){
 
-            $consulta =  $membros->find($request->membro_id);
-            // dd($consulta);
-           $data = new dateTime($consulta->dataBatismo);
-        //    dd($data->format('d/m/Y'));
+        if ($request->id) {
+            
+            $consulta =  $membros->find($request->id);
 
-            $nomeRelatorio = 'Certificado de Batismo '. $consulta->nome;
+            $data = DateTime::createFromFormat('d/m/Y', $request->dataBatismo);
+
+            $nomeRelatorio = 'Certificado de Batismo ' . $consulta->nome;
             $CertificadosGerados->add($request, $nomeRelatorio, $consulta->id);
             $batismo->atualizar($request);
 
-            // return view('batismos.certificado', ['consulta' => $consulta, 'data' => $data]);
 
 
             $pdf = PDF::loadView('batismos.certificado', compact('consulta', 'data'));
 
-            // SALVANDO DADOS GERADOS EM TABELA CERRTIFICADO GERADO
 
-            
-
-           $gerado =  $pdf->setPaper('a4', 'landscape')->stream($nomeRelatorio);
-
-            // SALVAR ARQUIVO NA PASTA PUBLIC CERTIIFICADO
+            $gerado =  $pdf->setPaper('a4', 'landscape')->stream($nomeRelatorio);
             $output = $pdf->output();
-            file_put_contents(public_path('certificado/'.$nomeRelatorio.'.pdf'), $output);
-            
-            
-            
-            
-            return $gerado;
-            
-        }else{
+            $filePath = public_path('certificado/' . $nomeRelatorio . '.pdf');
+            file_put_contents($filePath, $output);
 
-            return view('/batismoIndex');
+            // Adicione o nome do arquivo ao JSON de resposta
+            return response()->json([
+                'success' => true,
+                'filename' => $nomeRelatorio,
+            ]);
         }
+    }
 
-    
-        // dd($find->nome);
+    public function  gerarCertificadoCliente()
+    {
+
+        // alert('DIGITE SEU NOME');
+
+        $valor1 = "Primeiro Valor";
+        $valor2 = "Segundo Valor";
+
+        // Passando as variáveis para a view
+        return view('/batismos/certificadoCliente', compact('valor1', 'valor2'));
+        // return view('/batismos/certificadoCliente');
+
+    }
+
+    public function certificadoPublic(request $request)
+    {
+        dd('testando certificadoPublic');
     }
 }

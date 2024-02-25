@@ -57,6 +57,8 @@ Route::post('/relatorioMes', [DizimosController::class, 'relatorioMes'])->middle
 
 Route::get('/batismoIndex', [BatismosController::class, 'index'])->middleware('auth'); 
 Route::post('/batismoRelatorio', [BatismosController::class, 'relatorio'])->middleware('auth'); 
+Route::get('/geraCertificadoCliente', [BatismosController::class, 'gerarCertificadoCliente']); 
+Route::post('/certificadoPublic', [BatismosController::class, 'certificadoPublic'])->middleware('auth'); 
 Route::post('/gerarCertificado', [BatismosController::class, 'gerarCertificado'])->middleware('auth'); 
 
 Route::get('/relIndex', [RelCultoController::class, 'index'])->middleware('auth'); 

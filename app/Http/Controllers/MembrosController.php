@@ -6,116 +6,141 @@ use Illuminate\Http\Request;
 
 use App\Models\Membros;
 use App\Models\User;
+use Carbon\Carbon;
 use File;
 use DateTime;
 
 class MembrosController extends Controller
 {
-    
 
-    public function index(){
+    private $membroModel;
 
+
+    public function __construct(Membros $membrosModel)
+    {
+        $this->membroModel = $membrosModel;
+    }
+
+    public function show($id)
+    {
+        $membro = $this->membroModel::where('id', $id)->first();
+        // dd('aaa', $membro);
+        // $membro->dataNascimento = '10/12/2023';
+        $data = new DateTime($membro->dataNascimento);
+        $dataMembro = new DateTime($membro->dataMembro);
+        $membro->dataNascimento = $data->format('d/m/Y');
+        $membro->dataMembro = $dataMembro->format('Y');
+
+
+        return response()->json($membro);
+    }
+
+    public function index()
+    {
         $models = new Membros;
-         $find = Membros::all()->sortBy("nome");
-         
-         $membrosInativo = Membros::where('status', '=', 1)->get();
-        //  dd($membroInativo);
-        // dd(count($find));
- 
-        
-        // $find = Membros::where('status', '<>', 1)
-        //       ->orderBy('nome')
-        //       ->get();
-       $qntdCrianca = $models->calcularIdade($find);
+        $membros = Membros::where('status', 0)
+            ->orderBy('nome')
+            ->get()
+            ->toArray();
+
+        $find = Membros::all()->sortBy("nome");
+
+        $membrosInativo = Membros::where('status', '=', 1)->get();
+        $criancas = $models->buscaCriancas($find);
+        $aniversarianteMes = $models->obterAniversariantesDoMes($membros);
 
 
 
-        return view('membros.index', ['find' => $find, 'qntdCrianca'=> $qntdCrianca, 'membrosInativo' => $membrosInativo]);
+        $data = ['aniversariante' => $aniversarianteMes, 'find' => $membros,  'criancas' => $criancas, 'membrosInativo' => $membrosInativo];
+
+        return response()->json($data);
     }
 
-    public function add (Request $request){
-        
-        $membro = new Membros;
-        
 
-        $membro->nome = $request->nome;
-        $membro->dataMembro = $request->dataMembro;
-        $membro->dataNascimento = $request->dataNascimento;
-        $membro->endereco = strtoupper($request->endereco);
-        $membro->celular = $request->celular;
-        $membro->batizado = $request->batizado;
-        $membro->certificado = 0;
-        $membro->status = 0;
+    public function store(Request $request)
+    {
 
-        // dd($request->batizado);
+        try {
+            $dataNascimento = Carbon::parse($request->dataNascimento);
 
+            $this->membroModel->nome = strtoupper($request->nome);
+            $this->membroModel->dataNascimento = $dataNascimento;
+            $this->membroModel->endereco = strtoupper($request->endereco);
+            $this->membroModel->celular = $request->celular;
+            $this->membroModel->batizado = 0;
+            $this->membroModel->certificado = 0;
+            $this->membroModel->status = 0;
 
-        // image Upload
-        if($request->hasFile('foto') && $request->file('foto')->isValid()){
+            if ($request->foto) {
+                $base64Data = explode(',', $request->foto)[1];
+                $imageData = base64_decode($base64Data);
 
-            $requestImage = $request->foto;
-            $extension =$requestImage->extension();
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now") . "." . $extension);
-            $requestImage->move(public_path('img/membros'), $imageName);
+                // Obtém a extensão do arquivo a partir do tipo MIME
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mimeType = finfo_buffer($finfo, $imageData);
+                finfo_close($finfo);
+                $extension = explode('/', $mimeType)[1];
 
-            $membro->foto = $imageName;
+                // Gera um hash do nome original da imagem, timestamp atual e a extensão
+                $imageName = md5($request->nome . strtotime("now") . "." . $extension);
 
-        }
+                $this->membroModel->foto = $imageName;
 
-        $membro->save();
-
-        return redirect('/membros')->with('msg', 'Membro Cadastrado com Sucesso!');
-
-    }
-
-    public function edit($id){
-        $membro = Membros::findOrFail($id);
-
-        // dd($membro);
-
-        return view ('membros.edit', ['membro' => $membro]);
-    }
-
-    public function update(Request $request){
-
-        $find =  Membros::findOrFail($request->id);
-        
-        $membros = new Membros;
-        if($request->hasFile('foto') && $request->file('foto')->isValid()){
-            
-            $requestImage = $request->foto;
-            $extension = $requestImage->extension();
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now") . "." . $extension);
-            $requestImage->move(public_path('img/membros'), $imageName);
-
-            
-        }
-
-        // DELETA FOTO ANTIGA PARA ADICIONAR A NOVA
-        // SE FOR ALTERADA DELETA A ANTIGA
-        if(isset($imageName)){
-            File::delete('img/membros/'.$find->foto);
-        }
-        
-        
-        // $membros->edit($request, $imageName);
-        // dd($imageName);
-        
-        
-        
-        Membros::findOrFail($request->id)->update($request->all());
-        Membros::findOrFail($request->id)->update(['foto' => isset($imageName) ? $imageName: $find->foto ]);
-        
-        if($request->all()['acesso_privilegiado'] == 1){
-            $user = new User;
-            // dd($request->all()['nome']);
-            // dd($user->name = $request->all()['nome']);
+                file_put_contents(public_path('img/membros/' . $imageName), $imageData);
             }
 
-        // $membro = new Membros;
+            $this->membroModel->save();
 
-
-        return redirect('/membros')->with('msg', 'Membro '.$find->nome .' Editado !');
+            return response()->json(['message' => 'Membro cadastrado com sucesso'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Erro ao cadastrar membro', 'error' => $e->getMessage()], 500);
+        }
     }
 
+
+    public function edit($id)
+    {
+        $membro = $this->membroModel::find(1422);
+
+
+
+        return view('membros.edit', ['membro' => $membro]);
+    }
+
+    public function update(Request $request)
+    {
+        try {
+
+
+            if ($request->foto) {
+                if ($request->foto != $this->membroModel->findOrFail($request->id)->foto) {
+                    $base64Data = explode(',', $request->foto)[1];
+                    $imageData = base64_decode($base64Data);
+
+                    // Obtém a extensão do arquivo a partir do tipo MIME
+                    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                    $mimeType = finfo_buffer($finfo, $imageData);
+                    finfo_close($finfo);
+                    $extension = explode('/', $mimeType)[1];
+
+                    // Gera um hash do nome original da imagem, timestamp atual e a extensão
+                    $imageName = md5($request->nome . strtotime("now") . "." . $extension);
+
+
+                    $request->merge(['foto' => $imageName]);
+
+                    // dd($request->all());
+
+                    file_put_contents(public_path('img/membros/' . $imageName), $imageData);
+                }
+            }
+            $dataNascimento = Carbon::parse($request->dataNascimento);
+            $request->merge(['dataNascimento' => $dataNascimento]);
+            Membros::findOrFail($request->id)->update($request->all());
+
+            return response()->json(['message' => 'Membro atualizado com sucesso'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro ao atualizar o membro: ' . $e->getMessage()], 500);
+        }
+    }
 }
