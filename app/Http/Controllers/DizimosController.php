@@ -37,17 +37,41 @@ class DizimosController extends Controller
 
         return view('dizimo.cadastro', ['membros' => $findMembro]);
     }
+    
+    public function store(Request $request)
+    {
+        try {
+            $preco_corrigido = str_replace(".", "", $request->valor);
+            $precoSemVirgula = str_replace(",", ".", $preco_corrigido);
+            
+            $date = new \DateTime($request->data);
+            $formattedDate = $date->format('Y-m-d');
+
+            $dizimos = new Dizimos;
+            $dizimos->membro_id = $request->membro;
+            $dizimos->tipo = $request->tipo == 'oferta'? 0 : 1;
+            $dizimos->valor = $precoSemVirgula;
+            $dizimos->data_dizimo = $formattedDate;
+
+            if ($dizimos->save()) {
+                return response()->json(['success' => true, 'message' => 'Dizimo Salvo!']);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
 
     public function add(request $request)
     {
         $preco_corrigido = str_replace(".", "", $request->valor);
         $precoSemVirgula = str_replace(",", ".", $preco_corrigido);
-        // dd(number_format($precoSemVirgula ,2,",",".") );
+        // dd(number_format($precoSemVirgula ,2,",",".") )
 
         $dizimos = new Dizimos;
         $dizimos->membro_id = $request->membro_id;
         $dizimos->valor = $precoSemVirgula;
-        $dizimos->tipo = $request->tipo;
+        $dizimos->tipo = $request->tipo ;
         $dizimos->data_dizimo =  date_create_from_format("d/m/Y", $request->data);
 
         if ($dizimos->membro_id) {
