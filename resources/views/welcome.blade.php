@@ -11,7 +11,6 @@
         <input type="text" id="search" name="search" class="form-control" placeholder="Procurar Evento....">
     </form> --}}
     
-    {{-- <img src="/img/logo-preta.jpg" alt="sua presenca" width="100%" height=""> --}}
 
       
       <div class="slide-content" >
