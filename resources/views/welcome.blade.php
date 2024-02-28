@@ -23,7 +23,7 @@
     </div>
 
 
-<div id="events-container" class="col-md-12" >
+<div id="events-container" class="col-md-12" > 
    
     
     {{-- <div>Normal</div>
